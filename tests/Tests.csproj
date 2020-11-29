@@ -5,6 +5,7 @@
     <AssemblyName>Monitor.Tests</AssemblyName>
     <RootNamespace>Monitor</RootNamespace>
     <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
     <!-- https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/strong-naming -->
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Monitor.snk</AssemblyOriginatorKeyFile>
