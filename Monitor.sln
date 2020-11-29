@@ -9,6 +9,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "tests\Tests.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "examples\Examples.csproj", "{4F593BE4-98EE-4C83-8ED1-E8AFAA1C573E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{9C083997-A0D7-42DF-8B8E-CB6825799E09}"
+	ProjectSection(SolutionItems) = preProject
+		modules\csharp.common\.editorconfig = modules\csharp.common\.editorconfig
+		modules\csharp.common\.gitattributes = modules\csharp.common\.gitattributes
+		modules\csharp.common\.gitignore = modules\csharp.common\.gitignore
+		.gitmodules = .gitmodules
+		modules\csharp.common\directory.build.props = modules\csharp.common\directory.build.props
+		Monitor.snk = Monitor.snk
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
