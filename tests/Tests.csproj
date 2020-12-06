@@ -4,9 +4,6 @@
     <IsPackable>false</IsPackable>
     <AssemblyName>Monitor.Tests</AssemblyName>
     <RootNamespace>Monitor</RootNamespace>
-    <!-- https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/strong-naming -->
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Monitor.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Fuzzy" Version="*" />

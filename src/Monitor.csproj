@@ -10,9 +10,6 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <!-- https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/strong-naming -->
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Monitor.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- Make symbols and source code available to package users in Visual Studio Debugger -->
