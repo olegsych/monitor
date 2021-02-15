@@ -17,7 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{9C083997-A0D7-42
 		.gitmodules = .gitmodules
 		appveyor.yml = appveyor.yml
 		modules\csharp.common\directory.build.props = modules\csharp.common\directory.build.props
-		Monitor.snk = Monitor.snk
 		README.md = README.md
 	EndProjectSection
 EndProject

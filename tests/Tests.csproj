@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <AssemblyName>Monitor.Tests</AssemblyName>
     <RootNamespace>Monitor</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
