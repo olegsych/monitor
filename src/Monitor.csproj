@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Monitor</AssemblyName>
     <RootNamespace>Monitor</RootNamespace>
     <Description>A simple library for monitoring .NET code.</Description>
