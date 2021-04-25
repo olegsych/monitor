@@ -14,7 +14,7 @@ namespace Monitor
             readonly ICommandMonitor<Input> monitor;
 
             Count(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             void Work(Input input) {
                 try {
@@ -33,7 +33,7 @@ namespace Monitor
             readonly ICommandMonitor<Input> monitor;
 
             Duration(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             void Work(Input input) {
                 using IObservation observation = monitor.Start(input);
@@ -53,7 +53,7 @@ namespace Monitor
             readonly ICommandMonitor<Input> monitor;
 
             TaskCommand(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             async Task Work(Input input) {
                 using IObservation observation = monitor.Start(input);
@@ -73,7 +73,7 @@ namespace Monitor
             readonly ICommandMonitor<Input> monitor;
 
             TaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             async Task Work(Input input, CancellationToken cancellation) {
                 using IObservation observation = monitor.Start(input);
@@ -94,7 +94,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskCommand(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             ValueTask Work(Input input) =>
                 completeSynchronously
@@ -126,7 +126,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create<Input>(Work);
+                this.monitor = monitor.Command<Input>(Work);
 
             ValueTask Work(Input input, CancellationToken cancellation) =>
                 completeSynchronously

@@ -21,7 +21,7 @@ namespace Monitor
 
             public Decorator(IWork worker, IMonitor monitor) {
                 this.worker = worker;
-                this.monitor = monitor.Create<Input>(worker.Work);
+                this.monitor = monitor.Command<Input>(worker.Work);
             }
 
             public void Work(Input input) {

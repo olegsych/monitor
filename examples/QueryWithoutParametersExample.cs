@@ -17,7 +17,7 @@ namespace Monitor
             readonly IQueryMonitor<Output> monitor;
 
             Count(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             Output Query() {
                 try {
@@ -37,7 +37,7 @@ namespace Monitor
             readonly IQueryMonitor<Output> monitor;
 
             Duration(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             Output Query() {
                 using IObservation<Output> observation = monitor.Start();
@@ -59,7 +59,7 @@ namespace Monitor
             readonly IQueryMonitor<Output> monitor;
 
             TaskQuery(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             async Task<Output> Query() {
                 using IObservation<Output> observation = monitor.Start();
@@ -81,7 +81,7 @@ namespace Monitor
             readonly IQueryMonitor<Output> monitor;
 
             TaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             async Task<Output> Query(CancellationToken cancellation) {
                 using IObservation<Output> observation = monitor.Start();
@@ -104,7 +104,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskQuery(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             ValueTask<Output> Query() =>
                 completeSynchronously ?
@@ -138,7 +138,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create(Query);
+                this.monitor = monitor.Query(Query);
 
             ValueTask<Output> Query(CancellationToken cancellation) =>
                 completeSynchronously ?

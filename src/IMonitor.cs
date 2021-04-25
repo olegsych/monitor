@@ -10,9 +10,9 @@ namespace Monitor
     /// </remarks>
     public interface IMonitor
     {
-        ICommandMonitor Create(Command command);
-        ICommandMonitor<TInput> Create<TInput>(Command<TInput> command);
-        IQueryMonitor<TOutput> Create<TOutput>(Query<TOutput> query);
-        IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(Query<TInput, TOutput> query);
+        ICommandMonitor Command(Command command);
+        ICommandMonitor<TInput> Command<TInput>(Command<TInput> command);
+        IQueryMonitor<TOutput> Query<TOutput>(Query<TOutput> query);
+        IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(Query<TInput, TOutput> query);
     }
 }

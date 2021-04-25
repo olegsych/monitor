@@ -12,7 +12,7 @@ namespace Monitor
             readonly ICommandMonitor monitor;
 
             public Count(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             void Work() {
                 try {
@@ -31,7 +31,7 @@ namespace Monitor
             readonly ICommandMonitor monitor;
 
             public Duration(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             void Work() {
                 using IObservation observation = monitor.Start();
@@ -51,7 +51,7 @@ namespace Monitor
             readonly ICommandMonitor monitor;
 
             public TaskOperation(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             async Task Work() {
                 using IObservation observation = monitor.Start();
@@ -71,7 +71,7 @@ namespace Monitor
             readonly ICommandMonitor monitor;
 
             public TaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             async Task Work(CancellationToken cancellation) {
                 using IObservation observation = monitor.Start();
@@ -92,7 +92,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             public ValueTaskOperation(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             ValueTask Work() =>
                 completeSynchronously
@@ -124,7 +124,7 @@ namespace Monitor
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             public ValueTaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Create(Work);
+                this.monitor = monitor.Command(Work);
 
             ValueTask Work(CancellationToken cancellation) =>
                 completeSynchronously
