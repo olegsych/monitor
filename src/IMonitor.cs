@@ -1,13 +1,8 @@
-﻿using System;
-
-namespace Monitor
+﻿namespace Monitor
 {
     /// <summary>
-    /// Creates monitors for actors of given <see cref="Type"/>.
+    /// Creates monitors for different types of operations.
     /// </summary>
-    /// <remarks>
-    /// <see cref="Type"> may be too restrictive. 
-    /// </remarks>
     public interface IMonitor
     {
         ICommandMonitor Command(Command command);
