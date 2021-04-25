@@ -33,7 +33,13 @@ namespace Monitor
         public static IMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, Task> command) =>
             throw new NotImplementedException();
 
+        public static IMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, CancellationToken, Task> command) =>
+            throw new NotImplementedException();
+
         public static IMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, ValueTask> command) =>
+            throw new NotImplementedException();
+
+        public static IMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, CancellationToken, ValueTask> command) =>
             throw new NotImplementedException();
 
         #endregion
