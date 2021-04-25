@@ -1,4 +1,4 @@
-﻿using Fuzzy;
+using Fuzzy;
 
 namespace Monitor
 {

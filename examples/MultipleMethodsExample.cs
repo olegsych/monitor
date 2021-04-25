@@ -1,4 +1,4 @@
-﻿namespace Monitor
+namespace Monitor
 {
     /// <summary>
     /// An example of monitoring multiple methods in the same class. While needing separate monitoring for different methods is a smell of breaking the
