@@ -5,6 +5,9 @@ namespace Monitor
 {
     public static class ITelemetryDescriptionExtensions
     {
+        public static void AddDimension<TSubject, TResult>(this ITelemetryDescription<TSubject> description, Expression<Func<TSubject, TResult>> getter) =>
+            throw new NotImplementedException();
+
         public static void AddProperty<TSubject, TResult>(this ITelemetryDescription<TSubject> description, Expression<Func<TSubject, TResult>> getter) {
             Require(description, getter);
             description.AddProperty(Name(getter), getter.Compile());
