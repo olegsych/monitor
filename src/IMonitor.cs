@@ -8,7 +8,7 @@ namespace Monitor
     /// <remarks>
     /// <see cref="Type"> may be too restrictive. 
     /// </remarks>
-    public interface IMonitorFactory
+    public interface IMonitor
     {
         ICommandMonitor Create(Command command);
         ICommandMonitor<TInput> Create<TInput>(Command<TInput> command);

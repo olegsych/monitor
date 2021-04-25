@@ -11,8 +11,8 @@ namespace Monitor
         {
             readonly ICommandMonitor monitor;
 
-            public Count(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public Count(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             void Work() {
                 try {
@@ -30,8 +30,8 @@ namespace Monitor
         {
             readonly ICommandMonitor monitor;
 
-            public Duration(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public Duration(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             void Work() {
                 using IObservation observation = monitor.Start();
@@ -50,8 +50,8 @@ namespace Monitor
         {
             readonly ICommandMonitor monitor;
 
-            public TaskOperation(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public TaskOperation(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             async Task Work() {
                 using IObservation observation = monitor.Start();
@@ -70,8 +70,8 @@ namespace Monitor
         {
             readonly ICommandMonitor monitor;
 
-            public TaskWithCancellationToken(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public TaskWithCancellationToken(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             async Task Work(CancellationToken cancellation) {
                 using IObservation observation = monitor.Start();
@@ -91,8 +91,8 @@ namespace Monitor
             readonly ICommandMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
-            public ValueTaskOperation(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public ValueTaskOperation(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             ValueTask Work() =>
                 completeSynchronously
@@ -123,8 +123,8 @@ namespace Monitor
             readonly ICommandMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
-            public ValueTaskWithCancellationToken(IMonitorFactory factory) =>
-                monitor = factory.Create(Work);
+            public ValueTaskWithCancellationToken(IMonitor monitor) =>
+                this.monitor = monitor.Create(Work);
 
             ValueTask Work(CancellationToken cancellation) =>
                 completeSynchronously

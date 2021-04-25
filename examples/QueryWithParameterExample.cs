@@ -17,8 +17,8 @@ namespace Monitor
         {
             readonly IQueryMonitor<Input, Output> monitor;
 
-            Count(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            Count(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             Output Query(Input input) {
                 try {
@@ -37,8 +37,8 @@ namespace Monitor
         {
             readonly IQueryMonitor<Input, Output> monitor;
 
-            Duration(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            Duration(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             Output Query(Input input) {
                 using IObservation<Output> observation = monitor.Start(input);
@@ -59,8 +59,8 @@ namespace Monitor
         {
             readonly IQueryMonitor<Input, Output> monitor;
 
-            TaskQuery(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            TaskQuery(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             async Task<Output> Query(Input input) {
                 using IObservation<Output> observation = monitor.Start(input);
@@ -81,8 +81,8 @@ namespace Monitor
         {
             readonly IQueryMonitor<Input, Output> monitor;
 
-            TaskWithCancellationToken(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            TaskWithCancellationToken(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             async Task<Output> Query(Input input, CancellationToken cancellation) {
                 using IObservation<Output> observation = monitor.Start(input);
@@ -104,8 +104,8 @@ namespace Monitor
             readonly IQueryMonitor<Input, Output> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
-            ValueTaskQuery(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            ValueTaskQuery(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             ValueTask<Output> Query(Input input) =>
                 completeSynchronously ?
@@ -138,8 +138,8 @@ namespace Monitor
             readonly IQueryMonitor<Input, Output> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
-            ValueTaskWithCancellationToken(IMonitorFactory monitors) =>
-                monitor = monitors.Create<Input, Output>(Query);
+            ValueTaskWithCancellationToken(IMonitor monitor) =>
+                this.monitor = monitor.Create<Input, Output>(Query);
 
             ValueTask<Output> Query(Input input, CancellationToken cancellation) =>
                 completeSynchronously ?

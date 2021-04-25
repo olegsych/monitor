@@ -11,9 +11,9 @@
         readonly ICommandMonitor<Input> monitor1;
         readonly ICommandMonitor<Input> monitor2;
 
-        public MultipleMethodsExample(IMonitorFactory monitors) {
-            monitor1 = monitors.Create<Input>(Method1);
-            monitor2 = monitors.Create<Input>(Method2);
+        public MultipleMethodsExample(IMonitor monitor) {
+            monitor1 = monitor.Create<Input>(Method1);
+            monitor2 = monitor.Create<Input>(Method2);
         }
 
         void Method1(Input input) => monitor1.Observe(input);

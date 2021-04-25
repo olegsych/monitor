@@ -19,9 +19,9 @@ namespace Monitor
             readonly IWork worker;
             readonly ICommandMonitor<Input> monitor;
 
-            public Decorator(IWork worker, IMonitorFactory monitors) {
+            public Decorator(IWork worker, IMonitor monitor) {
                 this.worker = worker;
-                monitor = monitors.Create<Input>(worker.Work);
+                this.monitor = monitor.Create<Input>(worker.Work);
             }
 
             public void Work(Input input) {

@@ -8,76 +8,76 @@ namespace Monitor
     {
         #region Command
 
-        public static ICommandMonitor Create(this IMonitorFactory factory, Action command) =>
+        public static ICommandMonitor Create(this IMonitor factory, Action command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Create(this IMonitorFactory factory, Func<Task> command) =>
+        public static ICommandMonitor Create(this IMonitor factory, Func<Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Create(this IMonitorFactory factory, Func<ValueTask> command) =>
+        public static ICommandMonitor Create(this IMonitor factory, Func<ValueTask> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Create(this IMonitorFactory factory, Func<CancellationToken, Task> command) =>
+        public static ICommandMonitor Create(this IMonitor factory, Func<CancellationToken, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Create(this IMonitorFactory factory, Func<CancellationToken, ValueTask> command) =>
+        public static ICommandMonitor Create(this IMonitor factory, Func<CancellationToken, ValueTask> command) =>
             throw new NotImplementedException();
 
         #endregion
 
         #region Command<TInput>
 
-        public static ICommandMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Action<TInput> command) =>
+        public static ICommandMonitor<TInput> Create<TInput>(this IMonitor factory, Action<TInput> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, Task> command) =>
+        public static ICommandMonitor<TInput> Create<TInput>(this IMonitor factory, Func<TInput, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, CancellationToken, Task> command) =>
+        public static ICommandMonitor<TInput> Create<TInput>(this IMonitor factory, Func<TInput, CancellationToken, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, ValueTask> command) =>
+        public static ICommandMonitor<TInput> Create<TInput>(this IMonitor factory, Func<TInput, ValueTask> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Create<TInput>(this IMonitorFactory factory, Func<TInput, CancellationToken, ValueTask> command) =>
+        public static ICommandMonitor<TInput> Create<TInput>(this IMonitor factory, Func<TInput, CancellationToken, ValueTask> command) =>
             throw new NotImplementedException();
 
         #endregion
 
         #region Query<TOutput>
 
-        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitorFactory factory, Func<TOutput> command) =>
+        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitor factory, Func<TOutput> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitorFactory factory, Func<Task<TOutput>> command) =>
+        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitor factory, Func<Task<TOutput>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitorFactory factory, Func<CancellationToken, Task<TOutput>> command) =>
+        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitor factory, Func<CancellationToken, Task<TOutput>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitorFactory factory, Func<ValueTask<TOutput>> command) =>
+        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitor factory, Func<ValueTask<TOutput>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitorFactory factory, Func<CancellationToken, ValueTask<TOutput>> command) =>
+        public static IQueryMonitor<TOutput> Create<TOutput>(this IMonitor factory, Func<CancellationToken, ValueTask<TOutput>> command) =>
             throw new NotImplementedException();
 
         #endregion
 
         #region Query<TInput, TOutput>
 
-        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitorFactory factory, Func<TInput, TOutput> query) =>
+        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitor factory, Func<TInput, TOutput> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitorFactory factory, Func<TInput, Task<TOutput>> query) =>
+        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitor factory, Func<TInput, Task<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitorFactory factory, Func<TInput, CancellationToken, Task<TOutput>> query) =>
+        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, Task<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitorFactory factory, Func<TInput, ValueTask<TOutput>> query) =>
+        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitor factory, Func<TInput, ValueTask<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitorFactory factory, Func<TInput, CancellationToken, ValueTask<TOutput>> query) =>
+        public static IQueryMonitor<TInput, TOutput> Create<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, ValueTask<TOutput>> query) =>
             throw new NotImplementedException();
 
         #endregion
