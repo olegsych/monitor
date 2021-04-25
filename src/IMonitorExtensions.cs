@@ -9,7 +9,7 @@ namespace Monitor
         #region Command
 
         public static ICommandMonitor Command(this IMonitor factory, Action command) =>
-            factory.Command(new Command(command.Method));
+            factory.Command(command.Method);
 
         public static ICommandMonitor Command(this IMonitor factory, Func<Task> command) =>
             throw new NotImplementedException();
