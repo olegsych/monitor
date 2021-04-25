@@ -2,6 +2,17 @@
 
 namespace Monitor
 {
+    /// <summary>
+    /// Monitors operations with given <typeparamref name="TOutput"/> type.
+    /// </summary>
+    /// <typeparam name="TOutput">
+    /// Type of output. Operations with multiple outputs should define a distinct type
+    /// to combine the outputs into the same class or struct, or use a <see cref="Tuple"/>.
+    /// </typeparam>
+    /// <remarks>
+    /// Instances of <see cref="IQueryMonitor{TOutput}"/> are obtained using <see cref="IMonitor.Query{TOutput}()"/>
+    /// methods because in addition to the output, the monitor also needs information about the operation.
+    /// </remarks>
     public interface IQueryMonitor<in TOutput>: IDisposable
     {
         void Observe(TOutput output);
@@ -21,8 +32,8 @@ namespace Monitor
     /// to combine the outputs into the same class or struct, or use a <see cref="Tuple"/>.
     /// </typeparam>
     /// <remarks>
-    /// Instances of <see cref="IQueryMonitor{TInput, TOutput}"/> are obtained using <see cref="IMonitor.Create{TInput, TOutput}(Type)"/>
-    /// because in addition to the input and output, the monitor also needs information about the actor.
+    /// Instances of <see cref="IQueryMonitor{TInput, TOutput}"/> are obtained using <see cref="IMonitor.Query{TInput, TOutput}()"/>
+    /// methods because in addition to the input and output, the monitor also needs information about the operation.
     /// </remarks>
     public interface IQueryMonitor<in TInput, in TOutput>: IDisposable
     {
