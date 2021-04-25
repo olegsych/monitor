@@ -5,9 +5,9 @@ using Fuzzy;
 
 namespace Monitor
 {
-    public class OperationWithoutParametersExample: Example
+    public class CommandWithoutParametersExample: Example
     {
-        public class Count: OperationWithoutParametersExample
+        public class Count: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
 
@@ -26,7 +26,7 @@ namespace Monitor
             }
         }
 
-        public class Duration: OperationWithoutParametersExample
+        public class Duration: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
 
@@ -46,7 +46,7 @@ namespace Monitor
             }
         }
 
-        public class TaskOperation: OperationWithoutParametersExample
+        public class TaskOperation: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
 
@@ -66,7 +66,7 @@ namespace Monitor
             }
         }
 
-        public class TaskWithCancellationToken: OperationWithoutParametersExample
+        public class TaskWithCancellationToken: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
 
@@ -86,7 +86,7 @@ namespace Monitor
             }
         }
 
-        public class ValueTaskOperation: OperationWithoutParametersExample
+        public class ValueTaskOperation: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
@@ -118,7 +118,7 @@ namespace Monitor
             }
         }
 
-        public class ValueTaskWithCancellationToken: OperationWithoutParametersExample
+        public class ValueTaskWithCancellationToken: CommandWithoutParametersExample
         {
             readonly IMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();

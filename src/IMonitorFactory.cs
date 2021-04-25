@@ -12,15 +12,8 @@ namespace Monitor
     /// </remarks>
     public interface IMonitorFactory
     {
-        IMonitor Create(Action actor);
-        IMonitor Create(Func<Task> actor);
-        IMonitor Create(Func<ValueTask> actor);
-        IMonitor Create(Func<CancellationToken, Task> actor);
-        IMonitor Create(Func<CancellationToken, ValueTask> actor);
-
-        IMonitor<TInput> Create<TInput>(Action<TInput> actor);
-        IMonitor<TInput> Create<TInput>(Func<TInput, Task> actor);
-        IMonitor<TInput> Create<TInput>(Func<TInput, ValueTask> actor);
+        IMonitor Create(Command command);
+        IMonitor<TInput> Create<TInput>(Command<TInput> actor);
 
         IMonitor<TInput, TOutput> Create<TInput, TOutput>(Func<TInput, TOutput> actor);
         IMonitor<TInput, TOutput> Create<TInput, TOutput>(Func<TInput, Task<TOutput>> actor);
