@@ -12,6 +12,7 @@ namespace Monitor
     {
         IMonitor Create(Command command);
         IMonitor<TInput> Create<TInput>(Command<TInput> command);
+        IMonitor<TOutput> Create<TOutput>(Query<TOutput> query);
         IMonitor<TInput, TOutput> Create<TInput, TOutput>(Query<TInput, TOutput> query);
     }
 }

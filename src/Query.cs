@@ -1,6 +1,10 @@
 ﻿namespace Monitor
 {
-    public class Query<TInput, TOutput>
+    public class Query<TOutput>
+    {
+    }
+
+    public class Query<TInput, TOutput>: Query<TOutput>
     {
     }
 }
