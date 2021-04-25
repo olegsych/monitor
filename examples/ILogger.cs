@@ -10,7 +10,7 @@ namespace Monitor
         public class Subject { }
 
         readonly Subject subject = new Subject();
-        readonly IMonitor<Subject> monitor = Substitute.For<IMonitor<Subject>>();
+        readonly ICommandMonitor<Subject> monitor = Substitute.For<ICommandMonitor<Subject>>();
         readonly ILogger<Subject> logger = Substitute.For<ILogger<Subject>>();
 
         readonly Exception? noException = null;

@@ -8,8 +8,8 @@
     {
         class Input { }
 
-        readonly IMonitor<Input> monitor1;
-        readonly IMonitor<Input> monitor2;
+        readonly ICommandMonitor<Input> monitor1;
+        readonly ICommandMonitor<Input> monitor2;
 
         public MultipleMethodsExample(IMonitorFactory monitors) {
             monitor1 = monitors.Create<Input>(Method1);

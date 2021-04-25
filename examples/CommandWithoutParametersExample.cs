@@ -9,7 +9,7 @@ namespace Monitor
     {
         public class Count: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
 
             public Count(IMonitorFactory factory) =>
                 monitor = factory.Create(Work);
@@ -28,7 +28,7 @@ namespace Monitor
 
         public class Duration: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
 
             public Duration(IMonitorFactory factory) =>
                 monitor = factory.Create(Work);
@@ -48,7 +48,7 @@ namespace Monitor
 
         public class TaskOperation: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
 
             public TaskOperation(IMonitorFactory factory) =>
                 monitor = factory.Create(Work);
@@ -68,7 +68,7 @@ namespace Monitor
 
         public class TaskWithCancellationToken: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
 
             public TaskWithCancellationToken(IMonitorFactory factory) =>
                 monitor = factory.Create(Work);
@@ -88,7 +88,7 @@ namespace Monitor
 
         public class ValueTaskOperation: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             public ValueTaskOperation(IMonitorFactory factory) =>
@@ -120,7 +120,7 @@ namespace Monitor
 
         public class ValueTaskWithCancellationToken: CommandWithoutParametersExample
         {
-            readonly IMonitor monitor;
+            readonly ICommandMonitor monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             public ValueTaskWithCancellationToken(IMonitorFactory factory) =>

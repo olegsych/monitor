@@ -11,7 +11,7 @@ namespace Monitor
 
         class Count: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
 
             Count(IMonitorFactory factory) =>
                 monitor = factory.Create<Input>(Work);
@@ -30,7 +30,7 @@ namespace Monitor
 
         class Duration: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
 
             Duration(IMonitorFactory factory) =>
                 monitor = factory.Create<Input>(Work);
@@ -50,7 +50,7 @@ namespace Monitor
 
         class TaskCommand: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
 
             TaskCommand(IMonitorFactory factory) =>
                 monitor = factory.Create<Input>(Work);
@@ -70,7 +70,7 @@ namespace Monitor
 
         class TaskWithCancellationToken: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
 
             TaskWithCancellationToken(IMonitorFactory factory) =>
                 monitor = factory.Create<Input>(Work);
@@ -90,7 +90,7 @@ namespace Monitor
 
         class ValueTaskCommand: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskCommand(IMonitorFactory factory) =>
@@ -122,7 +122,7 @@ namespace Monitor
 
         class ValueTaskWithCancellationToken: CommandWithParametersExample
         {
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitorFactory factory) =>

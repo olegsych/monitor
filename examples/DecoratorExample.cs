@@ -17,7 +17,7 @@ namespace Monitor
         class Decorator: IWork
         {
             readonly IWork worker;
-            readonly IMonitor<Input> monitor;
+            readonly ICommandMonitor<Input> monitor;
 
             public Decorator(IWork worker, IMonitorFactory monitors) {
                 this.worker = worker;
