@@ -3,6 +3,16 @@
 namespace Monitor
 {
     /// <summary>
+    /// Monitors operations without inputs or outputs
+    /// </summary>
+    public interface IMonitor
+    {
+        void Observe();
+        void Observe(Exception exception);
+        IObservation Start();
+    }
+
+    /// <summary>
     /// Monitors operations with a given <typeparamref name="TInput"/> type and no output.
     /// </summary>
     /// <typeparam name="TInput">
