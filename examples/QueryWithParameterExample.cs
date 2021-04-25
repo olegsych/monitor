@@ -15,7 +15,7 @@ namespace Monitor
 
         public class Count: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
 
             Count(IMonitorFactory monitors) =>
                 monitor = monitors.Create<Input, Output>(Query);
@@ -35,7 +35,7 @@ namespace Monitor
 
         class Duration: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
 
             Duration(IMonitorFactory monitors) =>
                 monitor = monitors.Create<Input, Output>(Query);
@@ -57,7 +57,7 @@ namespace Monitor
 
         class TaskQuery: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
 
             TaskQuery(IMonitorFactory monitors) =>
                 monitor = monitors.Create<Input, Output>(Query);
@@ -79,7 +79,7 @@ namespace Monitor
 
         class TaskWithCancellationToken: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
 
             TaskWithCancellationToken(IMonitorFactory monitors) =>
                 monitor = monitors.Create<Input, Output>(Query);
@@ -101,7 +101,7 @@ namespace Monitor
 
         class ValueTaskQuery: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskQuery(IMonitorFactory monitors) =>
@@ -135,7 +135,7 @@ namespace Monitor
 
         class ValueTaskWithCancellationToken: QueryWithParameterExample
         {
-            readonly IMonitor<Input, Output> monitor;
+            readonly IQueryMonitor<Input, Output> monitor;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitorFactory monitors) =>
