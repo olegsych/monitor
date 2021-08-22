@@ -15,9 +15,8 @@ namespace Monitor
     /// </remarks>
     public interface IQueryMonitor<in TOutput>: IDisposable
     {
-        void Observe(TOutput output);
-        void Observe(Exception e);
-        IObservation<TOutput> Start();
+        Observation Start();
+        void Record(Observation observation, TOutput? output, Exception? exception);
     }
 
     /// <summary>

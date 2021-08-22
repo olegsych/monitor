@@ -22,11 +22,11 @@ namespace Monitor
             Output Query() {
                 try {
                     var output = new Output();
-                    monitor.Observe(output);
+                    monitor.Finish(output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Observe(e);
+                    monitor.Finish(e);
                     throw;
                 }
             }
@@ -40,14 +40,14 @@ namespace Monitor
                 this.monitor = monitor.Query(Query);
 
             Output Query() {
-                using IObservation<Output> observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     var output = new Output();
-                    observation.Finish(output);
+                    monitor.Finish(observation, output);
                     return output;
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
                 // Dispose() records invalid observation if Finish() is not called
@@ -62,15 +62,15 @@ namespace Monitor
                 this.monitor = monitor.Query(Query);
 
             async Task<Output> Query() {
-                using IObservation<Output> observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    observation.Finish(output);
+                    monitor.Finish(observation, output);
                     return output;
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
             }
@@ -84,15 +84,15 @@ namespace Monitor
                 this.monitor = monitor.Query(Query);
 
             async Task<Output> Query(CancellationToken cancellation) {
-                using IObservation<Output> observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    observation.Finish(output);
+                    monitor.Finish(observation, output);
                     return output;
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
             }
@@ -113,20 +113,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                monitor.Observe(output);
+                monitor.Finish(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync() {
-                using IObservation<Output> observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    observation.Finish(output);
+                    monitor.Finish(observation, output);
                     return output;
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
             }
@@ -147,20 +147,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                monitor.Observe(output);
+                monitor.Finish(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync(CancellationToken cancellation) {
-                using IObservation<Output> observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    observation.Finish(output);
+                    monitor.Finish(observation, output);
                     return output;
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
             }
