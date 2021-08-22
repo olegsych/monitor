@@ -24,24 +24,24 @@ namespace Monitor
 
         #endregion
 
-        //#region ICommandMonitor<TInput>
+        #region IQueryMonitor<TInput, TOutput>
 
-        //public static void Finish<T>(this ICommandMonitor<T> monitor, T input) =>
-        //    // monitor.Record(new Observation<T> { Input = input }, null);
-        //    throw new NotImplementedException();
+        public static void Finish<TInput, TOutput>(this IQueryMonitor<TInput, TOutput> monitor, TInput input, TOutput output) =>
+            // monitor.Record(new Observation<TInput> { Input = input }, output, null);
+            throw new NotImplementedException();
 
-        //public static void Finish<T>(this ICommandMonitor<T> monitor, T input, Exception exception) =>
-        //    // monitor.Record(new Observation<T> { Input = input }, exception);
-        //    throw new NotImplementedException();
+        public static void Finish<TInput, TOutput>(this IQueryMonitor<TInput, TOutput> monitor, TInput input, Exception exception) =>
+            // monitor.Record(new Observation<TInput> { Input = input }, default, exception);
+            throw new NotImplementedException();
 
-        //public static void Finish<T>(this ICommandMonitor<T> monitor, Observation<T> observation) =>
-        //    // monitor.Record(observation, null);
-        //    throw new NotImplementedException();
+        public static void Finish<TInput, TOutput>(this IQueryMonitor<TInput, TOutput> monitor, Observation<TInput> observation, TOutput output) =>
+            // monitor.Record(observation, output, null);
+            throw new NotImplementedException();
 
-        //public static void Finish<T>(this ICommandMonitor<T> monitor, Observation<T> observation, Exception exception) =>
-        //    // monitor.Record(observation, exception);
-        //    throw new NotImplementedException();
+        public static void Finish<TInput, TOutput>(this IQueryMonitor<TInput, TOutput> monitor, Observation<TInput> observation, Exception exception) =>
+            // monitor.Record(observation, default, exception);
+            throw new NotImplementedException();
 
-        //#endregion
+        #endregion
     }
 }

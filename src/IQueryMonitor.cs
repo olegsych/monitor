@@ -34,10 +34,9 @@ namespace Monitor
     /// Instances of <see cref="IQueryMonitor{TInput, TOutput}"/> are obtained using <see cref="IMonitor.Query{TInput, TOutput}()"/>
     /// methods because in addition to the input and output, the monitor also needs information about the operation.
     /// </remarks>
-    public interface IQueryMonitor<in TInput, in TOutput>: IDisposable
+    public interface IQueryMonitor<TInput, in TOutput>: IDisposable
     {
-        void Observe(TInput input, TOutput output);
-        void Observe(TInput input, Exception exception);
-        IObservation<TOutput> Start(TInput input);
+        Observation<TInput> Start(TInput input);
+        void Record(Observation<TInput> observation, TOutput? output, Exception? exception);
     }
 }
