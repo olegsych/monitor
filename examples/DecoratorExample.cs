@@ -25,12 +25,13 @@ namespace Monitor
             }
 
             public void Work(Input input) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     worker.Work(input);
+                    monitor.Finish(observation);
                 }
                 catch (Exception e){
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                 }
             }
         }

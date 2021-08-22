@@ -22,7 +22,7 @@ namespace Monitor
             [Fact]
             public void InvokesLogMethodWithGivenSubject() {
                 // Example
-                monitor.Observe(subject);
+                monitor.Finish(subject);
 
                 // What happens
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
@@ -36,7 +36,7 @@ namespace Monitor
                     throw exception;
                 }
                 catch (Exception e) {
-                    monitor.Observe(subject, e);
+                    monitor.Finish(subject, e);
                 }
 
                 // What happens
@@ -49,11 +49,10 @@ namespace Monitor
             [Fact]
             public void InvokesBeginScopeMethod() {
                 // Example
-                using IObservation observation = monitor.Start(subject);
-                // Successful observation is finished by Dispose()
-
-                // What happens
+                Observation<Subject> observation = monitor.Start(subject);
                 object assert = logger.Received().BeginScope(subject);
+
+                monitor.Finish(observation);
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
             }
 
@@ -61,12 +60,12 @@ namespace Monitor
             public void SupportsExceptions() {
                 // Example
                 var exception = new Exception();
-                using IObservation observation = monitor.Start(subject);
+                Observation<Subject> observation = monitor.Start(subject);
                 try {
                     throw exception;
                 }
                 catch (Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                 }
 
                 // What happens

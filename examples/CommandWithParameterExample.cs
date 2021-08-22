@@ -19,10 +19,10 @@ namespace Monitor
             void Work(Input input) {
                 try {
                     // Business logic
-                    monitor.Observe(input);
+                    monitor.Finish(input);
                 }
                 catch(Exception e) {
-                    monitor.Observe(input, e);
+                    monitor.Finish(input, e);
                     throw;
                 }
             }
@@ -36,15 +36,15 @@ namespace Monitor
                 this.monitor = monitor.Command<Input>(Work);
 
             void Work(Input input) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -56,15 +56,15 @@ namespace Monitor
                 this.monitor = monitor.Command<Input>(Work);
 
             async Task Work(Input input) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     await Task.Yield(); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -76,15 +76,15 @@ namespace Monitor
                 this.monitor = monitor.Command<Input>(Work);
 
             async Task Work(Input input, CancellationToken cancellation) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     await Task.Delay(50, cancellation); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -103,20 +103,20 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                monitor.Observe(input);
+                monitor.Finish(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     await Task.Yield(); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -135,20 +135,20 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                monitor.Observe(input);
+                monitor.Finish(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input, CancellationToken cancellation) {
-                using IObservation observation = monitor.Start(input);
+                Observation<Input> observation = monitor.Start(input);
                 try {
                     await Task.Delay(50, cancellation); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
     }

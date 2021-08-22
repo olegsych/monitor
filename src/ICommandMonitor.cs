@@ -29,10 +29,9 @@ namespace Monitor
     /// Instances of <see cref="ICommandMonitor{TInput}"/> are obtained using <see cref="IMonitor.Command{TInput}()"/>
     /// methods because in addition to the input, the monitor also needs information about the operation.
     /// </remarks>
-    public interface ICommandMonitor<in TInput>: IDisposable
+    public interface ICommandMonitor<TInput>: IDisposable
     {
-        void Observe(TInput input);
-        void Observe(TInput input, Exception exception);
-        IObservation Start(TInput input);
+        Observation<TInput> Start(TInput input);
+        void Record(Observation<TInput> observation, Exception? exception);
     }
 }

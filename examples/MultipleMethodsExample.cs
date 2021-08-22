@@ -16,7 +16,7 @@ namespace Monitor
             monitor2 = monitor.Command<Input>(Method2);
         }
 
-        void Method1(Input input) => monitor1.Observe(input);
-        void Method2(Input input) => monitor2.Observe(input);
+        void Method1(Input input) => monitor1.Finish(input);
+        void Method2(Input input) => monitor2.Finish(input);
     }
 }
