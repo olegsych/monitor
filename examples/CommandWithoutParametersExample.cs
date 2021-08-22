@@ -17,10 +17,10 @@ namespace Monitor
             void Work() {
                 try {
                     // Business logic
-                    monitor.Observe();
+                    monitor.Finish();
                 }
                 catch(Exception e) {
-                    monitor.Observe(e);
+                    monitor.Finish(e);
                     throw;
                 }
             }
@@ -34,15 +34,15 @@ namespace Monitor
                 this.monitor = monitor.Command(Work);
 
             void Work() {
-                using IObservation observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -54,15 +54,15 @@ namespace Monitor
                 this.monitor = monitor.Command(Work);
 
             async Task Work() {
-                using IObservation observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Yield(); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch (Exception e) {
-                    monitor.Observe(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -74,15 +74,15 @@ namespace Monitor
                 this.monitor = monitor.Command(Work);
 
             async Task Work(CancellationToken cancellation) {
-                using IObservation observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    monitor.Observe(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -101,20 +101,20 @@ namespace Monitor
 
             ValueTask WorkSync() {
                 // Business logic
-                monitor.Observe();
+                monitor.Finish();
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync() {
-                using IObservation observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Yield(); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
 
@@ -133,20 +133,20 @@ namespace Monitor
 
             ValueTask WorkSync() {
                 // Business logic
-                monitor.Observe();
+                monitor.Finish();
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(CancellationToken cancellation) {
-                using IObservation observation = monitor.Start();
+                Observation observation = monitor.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
+                    monitor.Finish(observation);
                 }
                 catch(Exception e) {
-                    observation.Finish(e);
+                    monitor.Finish(observation, e);
                     throw;
                 }
-                // Dispose() finishes successful observation
             }
         }
     }

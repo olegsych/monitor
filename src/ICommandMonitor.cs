@@ -11,9 +11,11 @@ namespace Monitor
     /// </remarks>
     public interface ICommandMonitor
     {
-        void Observe();
-        void Observe(Exception exception);
-        IObservation Start();
+        /// <summary>
+        /// Starts an observation, recording it's start time.
+        /// </summary>
+        Observation Start();
+        void Record(Observation observation, Exception? exception);
     }
 
     /// <summary>

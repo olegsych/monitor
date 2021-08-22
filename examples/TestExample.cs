@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using NSubstitute;
 using Xunit;
@@ -10,28 +11,28 @@ namespace Monitor
         {
             readonly ICommandMonitor monitor;
             public SUT(IMonitor monitor) => this.monitor = monitor.Command(Work);
-            public void Work() => monitor.Observe();
+            public void Work() => monitor.Finish();
         }
 
         readonly SUT sut;
-        readonly IMonitor monitor = Substitute.For<IMonitor>();
-        readonly ICommandMonitor command = Substitute.For<ICommandMonitor>();
+        readonly IMonitor factory = Substitute.For<IMonitor>();
+        readonly ICommandMonitor monitor = Substitute.For<ICommandMonitor>();
 
         public TestExample() {
-            _ = monitor.Command(Arg.Any<MethodBase>()).Returns(command);
-            sut = new SUT(monitor);
+            _ = factory.Command(Arg.Any<MethodBase>()).Returns(monitor);
+            sut = new SUT(factory);
         }
 
         [Fact]
         public void ConstructorCreatesCommandMonitor() {
-            _ = monitor.Received().Command(sut.Work);
-            _ = monitor.Received(1).Command(Arg.Any<MethodBase>());
+            _ = factory.Received().Command(((Action)sut.Work).Method);
+            _ = factory.Received(1).Command(Arg.Any<MethodBase>());
         }
 
         [Fact]
         public void WorkObservesCommand() {
             sut.Work();
-            command.Received().Observe();
+            monitor.Received().Record(default(Observation), default(Exception));
         }
     }
 }
