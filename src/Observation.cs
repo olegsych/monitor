@@ -2,7 +2,7 @@ using System;
 
 namespace Monitor
 {
-    public struct Observation
+    public readonly struct Observation
     {
         public Utc StartTime {
             get => throw new NotImplementedException();
@@ -10,7 +10,7 @@ namespace Monitor
         }
     }
 
-    public struct Observation<T>
+    public readonly struct Observation<T>
     {
         public Utc StartTime {
             get => throw new NotImplementedException();
@@ -19,7 +19,7 @@ namespace Monitor
 
         public T Input {
             get => throw new NotImplementedException();
-            internal set => throw new NotImplementedException();
+            private set => throw new NotImplementedException();
         }
     }
 }
