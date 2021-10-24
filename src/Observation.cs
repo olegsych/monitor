@@ -1,10 +1,11 @@
 using System;
+using Chronology;
 
 namespace Monitor
 {
     public readonly struct Observation
     {
-        public Utc StartTime {
+        public HighResolutionTimestamp StartTime {
             get => throw new NotImplementedException();
             private set => throw new NotImplementedException();
         }
@@ -12,7 +13,7 @@ namespace Monitor
 
     public readonly struct Observation<T>
     {
-        public Utc StartTime {
+        public HighResolutionTimestamp StartTime {
             get => throw new NotImplementedException();
             private set => throw new NotImplementedException();
         }
