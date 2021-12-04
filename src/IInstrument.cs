@@ -24,4 +24,10 @@ namespace Monitor
         HighResolutionTimestamp Start();
         void Measure(HighResolutionTimestamp startTime = default, Exception? exception = null, T? subject = default);
     }
+
+    public interface IInstrument<in T1, in T2>
+    {
+        HighResolutionTimestamp Start();
+        void Measure(HighResolutionTimestamp startTime = default, Exception? exception = null, T1? subject1 = default, T2? subject2 = default);
+    }
 }

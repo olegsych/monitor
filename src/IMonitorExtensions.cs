@@ -44,7 +44,7 @@ namespace Monitor
 
         #endregion
 
-        #region Query<TOutput>
+        #region Instrument<TOutput>
 
         public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T> command) =>
             throw new NotImplementedException();
@@ -63,21 +63,21 @@ namespace Monitor
 
         #endregion
 
-        #region Query<TInput, TOutput>
+        #region Instrument<TInput, TOutput>
 
-        public static IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(this IMonitor factory, Func<TInput, TOutput> query) =>
+        public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor factory, Func<TInput, TOutput> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(this IMonitor factory, Func<TInput, Task<TOutput>> query) =>
+        public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor factory, Func<TInput, Task<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, Task<TOutput>> query) =>
+        public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, Task<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(this IMonitor factory, Func<TInput, ValueTask<TOutput>> query) =>
+        public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor factory, Func<TInput, ValueTask<TOutput>> query) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, ValueTask<TOutput>> query) =>
+        public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor factory, Func<TInput, CancellationToken, ValueTask<TOutput>> query) =>
             throw new NotImplementedException();
 
         #endregion
