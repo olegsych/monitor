@@ -11,10 +11,13 @@ namespace Monitor
         public static void Measure<T>(this IInstrument<T> instrument, T subject) =>
             instrument.Measure(default, default, subject);
 
+        public static void Measure<T>(this IInstrument<T> instrument, Exception exception) =>
+            instrument.Measure(default, exception, default);
+
         public static void Measure<T>(this IInstrument<T> instrument, HighResolutionTimestamp start, T subject) =>
             instrument.Measure(start, default, subject);
 
-        public static void Measure<T>(this IInstrument<T> instrument, Exception? exception, T subject) =>
+        public static void Measure<T>(this IInstrument<T> instrument, Exception exception, T subject) =>
             instrument.Measure(default, exception, subject);
     }
 }

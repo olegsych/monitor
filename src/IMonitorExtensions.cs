@@ -46,19 +46,19 @@ namespace Monitor
 
         #region Query<TOutput>
 
-        public static IQueryMonitor<TOutput> Query<TOutput>(this IMonitor factory, Func<TOutput> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Query<TOutput>(this IMonitor factory, Func<Task<TOutput>> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<Task<T>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Query<TOutput>(this IMonitor factory, Func<CancellationToken, Task<TOutput>> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<CancellationToken, Task<T>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Query<TOutput>(this IMonitor factory, Func<ValueTask<TOutput>> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<ValueTask<T>> command) =>
             throw new NotImplementedException();
 
-        public static IQueryMonitor<TOutput> Query<TOutput>(this IMonitor factory, Func<CancellationToken, ValueTask<TOutput>> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<CancellationToken, ValueTask<T>> command) =>
             throw new NotImplementedException();
 
         #endregion

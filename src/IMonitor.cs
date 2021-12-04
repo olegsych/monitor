@@ -9,7 +9,6 @@ namespace Monitor
     {
         IInstrument Instrument(MethodBase method);
         IInstrument<T> Instrument<T>(MethodBase method);
-        IQueryMonitor<TOutput> Query<TOutput>(MethodBase query);
         IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(MethodBase query);
     }
 }

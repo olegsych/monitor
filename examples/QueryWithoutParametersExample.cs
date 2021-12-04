@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Chronology;
 using Fuzzy;
 
 namespace Monitor
@@ -14,19 +15,19 @@ namespace Monitor
 
         public class Count: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
 
             Count(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             Output Query() {
                 try {
                     var output = new Output();
-                    monitor.Finish(output);
+                    instrument.Measure(output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(e);
+                    instrument.Measure(e);
                     throw;
                 }
             }
@@ -34,43 +35,42 @@ namespace Monitor
 
         class Duration: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
 
             Duration(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             Output Query() {
-                Observation observation = monitor.Start();
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     var output = new Output();
-                    monitor.Finish(observation, output);
+                    instrument.Measure(start, output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
-                // Dispose() records invalid observation if Finish() is not called
             }
         }
 
         class TaskQuery: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
 
             TaskQuery(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             async Task<Output> Query() {
-                Observation observation = monitor.Start();
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    monitor.Finish(observation, output);
+                    instrument.Measure(start, output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -78,21 +78,21 @@ namespace Monitor
 
         class TaskWithCancellationToken: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
 
             TaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             async Task<Output> Query(CancellationToken cancellation) {
-                Observation observation = monitor.Start();
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    monitor.Finish(observation, output);
+                    instrument.Measure(start, output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -100,11 +100,11 @@ namespace Monitor
 
         class ValueTaskQuery: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskQuery(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             ValueTask<Output> Query() =>
                 completeSynchronously ?
@@ -113,20 +113,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                monitor.Finish(output);
+                instrument.Measure(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync() {
-                Observation observation = monitor.Start();
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    monitor.Finish(observation, output);
+                    instrument.Measure(start, output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -134,11 +134,11 @@ namespace Monitor
 
         class ValueTaskWithCancellationToken: QueryWithoutParametersExample
         {
-            readonly IQueryMonitor<Output> monitor;
+            readonly IInstrument<Output> instrument;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Query(Query);
+                instrument = monitor.Instrument(Query);
 
             ValueTask<Output> Query(CancellationToken cancellation) =>
                 completeSynchronously ?
@@ -147,20 +147,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                monitor.Finish(output);
+                instrument.Measure(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync(CancellationToken cancellation) {
-                Observation observation = monitor.Start();
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    monitor.Finish(observation, output);
+                    instrument.Measure(start, output);
                     return output;
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }

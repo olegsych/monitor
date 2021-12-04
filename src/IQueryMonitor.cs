@@ -3,23 +3,6 @@ using System;
 namespace Monitor
 {
     /// <summary>
-    /// Monitors operations with given <typeparamref name="TOutput"/> type.
-    /// </summary>
-    /// <typeparam name="TOutput">
-    /// Type of output. Operations with multiple outputs should define a distinct type
-    /// to combine the outputs into the same class or struct, or use a <see cref="Tuple"/>.
-    /// </typeparam>
-    /// <remarks>
-    /// Instances of <see cref="IQueryMonitor{TOutput}"/> are obtained using <see cref="IMonitor.Query{TOutput}()"/>
-    /// methods because in addition to the output, the monitor also needs information about the operation.
-    /// </remarks>
-    public interface IQueryMonitor<in TOutput>: IDisposable
-    {
-        Observation Start();
-        void Record(Observation observation, TOutput? output, Exception? exception);
-    }
-
-    /// <summary>
     /// Monitors operations with given <typeparamref name="TInput"/> and <typeparamref name="TOutput"/> types.
     /// </summary>
     /// <typeparam name="TInput">
