@@ -1,4 +1,5 @@
 using System;
+using Chronology;
 
 namespace Monitor
 {
@@ -17,21 +18,21 @@ namespace Monitor
         class Decorator: IWork
         {
             readonly IWork worker;
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
 
             public Decorator(IWork worker, IMonitor monitor) {
                 this.worker = worker;
-                this.monitor = monitor.Command<Input>(worker.Work);
+                instrument = monitor.Instrument<Input>(worker.Work);
             }
 
             public void Work(Input input) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     worker.Work(input);
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch (Exception e){
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                 }
             }
         }

@@ -1,28 +1,29 @@
 using System;
 using System.Linq.Expressions;
+using Chronology;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
 namespace Monitor
 {
-    public class ILogger
+    public class ILoggerExample
     {
         public class Subject { }
 
         readonly Subject subject = new Subject();
-        readonly ICommandMonitor<Subject> monitor = Substitute.For<ICommandMonitor<Subject>>();
-        readonly ILogger<Subject> logger = Substitute.For<ILogger<Subject>>();
+        readonly IInstrument<Subject> instrument = Substitute.For<IInstrument<Subject>>();
+        readonly ILogger logger = Substitute.For<ILogger>();
 
         readonly Exception? noException = null;
         readonly Expression<Predicate<Func<Subject, Exception, string>>> expectedFormatter = _ => true;
 
-        public class Observe: ILogger
+        public class Observe: ILoggerExample
         {
             [Fact]
             public void InvokesLogMethodWithGivenSubject() {
                 // Example
-                monitor.Finish(subject);
+                instrument.Measure(subject);
 
                 // What happens
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
@@ -36,7 +37,7 @@ namespace Monitor
                     throw exception;
                 }
                 catch (Exception e) {
-                    monitor.Finish(subject, e);
+                    instrument.Measure(e, subject);
                 }
 
                 // What happens
@@ -44,15 +45,15 @@ namespace Monitor
             }
         }
 
-        public class Start: ILogger
+        public class Start: ILoggerExample
         {
             [Fact]
             public void InvokesBeginScopeMethod() {
                 // Example
-                Observation<Subject> observation = monitor.Start(subject);
-                object assert = logger.Received().BeginScope(subject);
+                HighResolutionTimestamp start = instrument.Start();
+                object assert = logger.Received().BeginScope(start);
 
-                monitor.Finish(observation);
+                instrument.Measure(start, subject);
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
             }
 
@@ -60,12 +61,12 @@ namespace Monitor
             public void SupportsExceptions() {
                 // Example
                 var exception = new Exception();
-                Observation<Subject> observation = monitor.Start(subject);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     throw exception;
                 }
                 catch (Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                 }
 
                 // What happens

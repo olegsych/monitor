@@ -25,21 +25,21 @@ namespace Monitor
 
         #endregion
 
-        #region Command<TInput>
+        #region Instrument<TInput>
 
-        public static ICommandMonitor<TInput> Command<TInput>(this IMonitor factory, Action<TInput> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Action<T> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Command<TInput>(this IMonitor factory, Func<TInput, Task> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Command<TInput>(this IMonitor factory, Func<TInput, CancellationToken, Task> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T, CancellationToken, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Command<TInput>(this IMonitor factory, Func<TInput, ValueTask> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T, ValueTask> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor<TInput> Command<TInput>(this IMonitor factory, Func<TInput, CancellationToken, ValueTask> command) =>
+        public static IInstrument<T> Instrument<T>(this IMonitor factory, Func<T, CancellationToken, ValueTask> command) =>
             throw new NotImplementedException();
 
         #endregion

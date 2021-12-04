@@ -8,15 +8,15 @@ namespace Monitor
     {
         class Input { }
 
-        readonly ICommandMonitor<Input> monitor1;
-        readonly ICommandMonitor<Input> monitor2;
+        readonly IInstrument<Input> instrument1;
+        readonly IInstrument<Input> instrument2;
 
         public MultipleMethodsExample(IMonitor monitor) {
-            monitor1 = monitor.Command<Input>(Method1);
-            monitor2 = monitor.Command<Input>(Method2);
+            instrument1 = monitor.Instrument<Input>(Method1);
+            instrument2 = monitor.Instrument<Input>(Method2);
         }
 
-        void Method1(Input input) => monitor1.Finish(input);
-        void Method2(Input input) => monitor2.Finish(input);
+        void Method1(Input input) => instrument1.Measure(input);
+        void Method2(Input input) => instrument2.Measure(input);
     }
 }

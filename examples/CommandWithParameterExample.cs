@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Chronology;
 using Fuzzy;
 
 namespace Monitor
@@ -11,18 +12,18 @@ namespace Monitor
 
         class Count: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
 
             Count(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             void Work(Input input) {
                 try {
                     // Business logic
-                    monitor.Finish(input);
+                    instrument.Measure(input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(input, e);
+                    instrument.Measure(e, input);
                     throw;
                 }
             }
@@ -30,19 +31,19 @@ namespace Monitor
 
         class Duration: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
 
             Duration(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             void Work(Input input) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     // Business logic
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e, input);
                     throw;
                 }
             }
@@ -50,19 +51,19 @@ namespace Monitor
 
         class TaskCommand: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
 
             TaskCommand(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             async Task Work(Input input) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -70,19 +71,19 @@ namespace Monitor
 
         class TaskWithCancellationToken: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
 
             TaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             async Task Work(Input input, CancellationToken cancellation) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -90,11 +91,11 @@ namespace Monitor
 
         class ValueTaskCommand: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskCommand(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             ValueTask Work(Input input) =>
                 completeSynchronously
@@ -103,18 +104,18 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                monitor.Finish(input);
+                instrument.Measure(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }
@@ -122,11 +123,11 @@ namespace Monitor
 
         class ValueTaskWithCancellationToken: CommandWithParametersExample
         {
-            readonly ICommandMonitor<Input> monitor;
+            readonly IInstrument<Input> instrument;
             readonly bool completeSynchronously = fuzzy.Boolean();
 
             ValueTaskWithCancellationToken(IMonitor monitor) =>
-                this.monitor = monitor.Command<Input>(Work);
+                instrument = monitor.Instrument<Input>(Work);
 
             ValueTask Work(Input input, CancellationToken cancellation) =>
                 completeSynchronously
@@ -135,18 +136,18 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                monitor.Finish(input);
+                instrument.Measure(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input, CancellationToken cancellation) {
-                Observation<Input> observation = monitor.Start(input);
+                HighResolutionTimestamp start = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    monitor.Finish(observation);
+                    instrument.Measure(start, input);
                 }
                 catch(Exception e) {
-                    monitor.Finish(observation, e);
+                    instrument.Measure(start, e);
                     throw;
                 }
             }

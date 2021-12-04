@@ -8,7 +8,7 @@ namespace Monitor
     public interface IMonitor
     {
         IInstrument Instrument(MethodBase method);
-        ICommandMonitor<TInput> Command<TInput>(MethodBase command);
+        IInstrument<T> Instrument<T>(MethodBase method);
         IQueryMonitor<TOutput> Query<TOutput>(MethodBase query);
         IQueryMonitor<TInput, TOutput> Query<TInput, TOutput>(MethodBase query);
     }
