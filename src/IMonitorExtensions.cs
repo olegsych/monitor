@@ -6,21 +6,21 @@ namespace Monitor
 {
     public static class IMonitorExtensions
     {
-        #region Command
+        #region Instrument
 
-        public static ICommandMonitor Command(this IMonitor factory, Action command) =>
-            factory.Command(command.Method);
+        public static IInstrument Instrument(this IMonitor factory, Action action) =>
+            factory.Instrument(action.Method);
 
-        public static ICommandMonitor Command(this IMonitor factory, Func<Task> command) =>
+        public static IInstrument Instrument(this IMonitor factory, Func<Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Command(this IMonitor factory, Func<ValueTask> command) =>
+        public static IInstrument Instrument(this IMonitor factory, Func<ValueTask> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Command(this IMonitor factory, Func<CancellationToken, Task> command) =>
+        public static IInstrument Instrument(this IMonitor factory, Func<CancellationToken, Task> command) =>
             throw new NotImplementedException();
 
-        public static ICommandMonitor Command(this IMonitor factory, Func<CancellationToken, ValueTask> command) =>
+        public static IInstrument Instrument(this IMonitor factory, Func<CancellationToken, ValueTask> command) =>
             throw new NotImplementedException();
 
         #endregion

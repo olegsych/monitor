@@ -9,30 +9,30 @@ namespace Monitor
     {
         class SUT
         {
-            readonly ICommandMonitor monitor;
-            public SUT(IMonitor monitor) => this.monitor = monitor.Command(Work);
-            public void Work() => monitor.Finish();
+            readonly IInstrument instrument;
+            public SUT(IMonitor monitor) => instrument = monitor.Instrument(Work);
+            public void Work() => instrument.Measure();
         }
 
         readonly SUT sut;
         readonly IMonitor factory = Substitute.For<IMonitor>();
-        readonly ICommandMonitor monitor = Substitute.For<ICommandMonitor>();
+        readonly IInstrument instrument = Substitute.For<IInstrument>();
 
         public TestExample() {
-            _ = factory.Command(Arg.Any<MethodBase>()).Returns(monitor);
+            _ = factory.Instrument(Arg.Any<MethodBase>()).Returns(instrument);
             sut = new SUT(factory);
         }
 
         [Fact]
         public void ConstructorCreatesCommandMonitor() {
-            _ = factory.Received().Command(((Action)sut.Work).Method);
-            _ = factory.Received(1).Command(Arg.Any<MethodBase>());
+            _ = factory.Received().Instrument(((Action)sut.Work).Method);
+            _ = factory.Received(1).Instrument(Arg.Any<MethodBase>());
         }
 
         [Fact]
         public void WorkObservesCommand() {
             sut.Work();
-            monitor.Received().Record(default(Observation), default(Exception));
+            instrument.Received().Measure();
         }
     }
 }

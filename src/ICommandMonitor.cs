@@ -3,22 +3,6 @@ using System;
 namespace Monitor
 {
     /// <summary>
-    /// Monitors operations without inputs or outputs
-    /// </summary>
-    /// <remarks>
-    /// Instances of <see cref="ICommandMonitor"/> are obtained using <see cref="IMonitor.Command()"/>
-    /// methods because the monitor needs information about the operation.
-    /// </remarks>
-    public interface ICommandMonitor
-    {
-        /// <summary>
-        /// Starts an observation, recording it's start time.
-        /// </summary>
-        Observation Start();
-        void Record(Observation observation, Exception? exception);
-    }
-
-    /// <summary>
     /// Monitors operations with a given <typeparamref name="TInput"/> type and no output.
     /// </summary>
     /// <typeparam name="TInput">
