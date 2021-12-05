@@ -2,6 +2,13 @@ using System;
 
 namespace Monitor
 {
+    public abstract class TelemetryAttribute: Attribute
+    {
+        protected TelemetryAttribute() { }
+        protected TelemetryAttribute(string name) => Name = name;
+        public string? Name { get; }
+    }
+
     /// <summary>
     /// Tells <see cref="Monitor"/> that the member should be recorded as a property.
     /// </summary>
@@ -11,7 +18,11 @@ namespace Monitor
     /// be recorded in telemetry when marked with this attribute.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-    public sealed class TelemetryPropertyAttribute: Attribute { }
+    public sealed class TelemetryPropertyAttribute: TelemetryAttribute
+    {
+        public TelemetryPropertyAttribute() { }
+        public TelemetryPropertyAttribute(string name): base(name) { }
+    }
 
     /// <summary>
     /// Tells <see cref="Monitor"/> that the member should be recorded as a metric.
@@ -22,7 +33,11 @@ namespace Monitor
     /// values of methods can be recorded as metrics when marked with this attribute.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-    public sealed class TelemetryMetricAttribute: Attribute { }
+    public sealed class TelemetryMetricAttribute: TelemetryAttribute
+    {
+        public TelemetryMetricAttribute() { }
+        public TelemetryMetricAttribute(string name) : base(name) { }
+    }
 
     /// <summary>
     /// Tells <see cref="Monitor"/> that the member should be recorded as a dimension.
@@ -34,5 +49,9 @@ namespace Monitor
     /// be designated explicitly.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-    public sealed class TelemetryDimensionAttribute: Attribute { }
+    public sealed class TelemetryDimensionAttribute: TelemetryAttribute
+    {
+        public TelemetryDimensionAttribute() { }
+        public TelemetryDimensionAttribute(string name) : base(name) { }
+    }
 }

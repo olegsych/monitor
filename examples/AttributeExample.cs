@@ -7,14 +7,14 @@ namespace Monitor
     {
         class Subject
         {
-            [TelemetryProperty]
-            string GetProperty() => string.Empty;
+            [TelemetryProperty("foo")]
+            string GetFoo() => string.Empty;
 
-            [TelemetryMetric]
-            int GetMetric() => default;
+            [TelemetryMetric("bar")]
+            int GetBar() => default;
 
-            [TelemetryDimension]
-            string GetDimension() => string.Empty;
+            [TelemetryDimension("baz")]
+            string GetBaz() => string.Empty;
         }
     }
 }
