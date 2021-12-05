@@ -5,7 +5,7 @@ namespace Monitor
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddMonitoring(this IServiceCollection services) =>
+        public static IServiceCollection AddMonitor(this IServiceCollection services) =>
             throw new NotImplementedException();
 
         public static IServiceCollection AddTelemetryDescriptor<TSubject, TDescriptor>(this IServiceCollection services)

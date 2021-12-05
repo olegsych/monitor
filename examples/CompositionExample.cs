@@ -5,7 +5,7 @@ namespace Monitor
     class CompositionExample
     {
         void ConfigureServices(IServiceCollection services) => services
-            .AddMonitoring()
+            .AddMonitor()
             .AddTelemetryDescriptor<Subject, SubjectTelemetryDescriptor>();
 
         class Subject
