@@ -2,7 +2,10 @@ using Fuzzy;
 
 namespace Monitor
 {
-    public class Example
+    /// <summary>
+    /// A base class for other examples.
+    /// </summary>
+    public abstract class Example
     {
         protected static readonly IFuzz fuzzy = new RandomFuzz();
     }
