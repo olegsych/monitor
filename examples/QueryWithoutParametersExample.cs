@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Chronology;
 using Fuzzy;
 
 namespace Monitor
@@ -23,11 +22,11 @@ namespace Monitor
             Output Query() {
                 try {
                     var output = new Output();
-                    instrument.Measure(output);
+                    instrument.Record(output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(e);
+                    instrument.Record(e);
                     throw;
                 }
             }
@@ -41,14 +40,14 @@ namespace Monitor
                 instrument = monitor.Instrument(Query);
 
             Output Query() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     var output = new Output();
-                    instrument.Measure(start, output);
+                    instrument.Record(measurement, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -62,15 +61,15 @@ namespace Monitor
                 instrument = monitor.Instrument(Query);
 
             async Task<Output> Query() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    instrument.Measure(start, output);
+                    instrument.Record(measurement, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -84,15 +83,15 @@ namespace Monitor
                 instrument = monitor.Instrument(Query);
 
             async Task<Output> Query(CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    instrument.Measure(start, output);
+                    instrument.Record(measurement, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -113,20 +112,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                instrument.Measure(output);
+                instrument.Record(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    instrument.Measure(start, output);
+                    instrument.Record(measurement, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -147,20 +146,20 @@ namespace Monitor
 
             ValueTask<Output> QuerySync() {
                 var output = new Output();
-                instrument.Measure(output);
+                instrument.Record(output);
                 return ValueTask.FromResult(output);
             }
 
             async Task<Output> QueryAsync(CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    instrument.Measure(start, output);
+                    instrument.Record(measurement, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }

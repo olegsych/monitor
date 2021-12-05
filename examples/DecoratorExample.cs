@@ -1,5 +1,4 @@
 using System;
-using Chronology;
 
 namespace Monitor
 {
@@ -26,13 +25,13 @@ namespace Monitor
             }
 
             public void Work(Input input) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     worker.Work(input);
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch (Exception e){
-                    instrument.Measure(start, e, input);
+                    instrument.Record(measurement, e, input);
                 }
             }
         }

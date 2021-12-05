@@ -16,7 +16,7 @@ namespace Monitor
             instrument2 = monitor.Instrument<Input>(Method2);
         }
 
-        void Method1(Input input) => instrument1.Measure(input);
-        void Method2(Input input) => instrument2.Measure(input);
+        void Method1(Input input) => instrument1.Record(input);
+        void Method2(Input input) => instrument2.Record(input);
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Linq.Expressions;
-using Chronology;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
@@ -23,7 +22,7 @@ namespace Monitor
             [Fact]
             public void InvokesLogMethodWithGivenSubject() {
                 // Example
-                instrument.Measure(subject);
+                instrument.Record(subject);
 
                 // What happens
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
@@ -37,7 +36,7 @@ namespace Monitor
                     throw exception;
                 }
                 catch (Exception e) {
-                    instrument.Measure(e, subject);
+                    instrument.Record(e, subject);
                 }
 
                 // What happens
@@ -50,10 +49,10 @@ namespace Monitor
             [Fact]
             public void InvokesBeginScopeMethod() {
                 // Example
-                HighResolutionTimestamp start = instrument.Start();
-                object assert = logger.Received().BeginScope(start);
+                Measurement measurement = instrument.Start();
+                object assert = logger.Received().BeginScope(measurement);
 
-                instrument.Measure(start, subject);
+                instrument.Record(measurement, subject);
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
             }
 
@@ -61,12 +60,12 @@ namespace Monitor
             public void SupportsExceptions() {
                 // Example
                 var exception = new Exception();
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     throw exception;
                 }
                 catch (Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                 }
 
                 // What happens

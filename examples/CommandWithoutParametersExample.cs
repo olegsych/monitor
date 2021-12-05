@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Chronology;
 using Fuzzy;
 
 namespace Monitor
@@ -18,10 +17,10 @@ namespace Monitor
             void Work() {
                 try {
                     // Business logic
-                    instrument.Measure();
+                    instrument.Record();
                 }
                 catch(Exception e) {
-                    instrument.Measure(e);
+                    instrument.Record(e);
                     throw;
                 }
             }
@@ -35,13 +34,13 @@ namespace Monitor
                 instrument = monitor.Instrument(Work);
 
             void Work() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     // Business logic
-                    instrument.Measure(start);
+                    instrument.Record(measurement);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -55,13 +54,13 @@ namespace Monitor
                 instrument = monitor.Instrument(Work);
 
             async Task Work() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    instrument.Measure(start);
+                    instrument.Record(measurement);
                 }
                 catch (Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -75,13 +74,13 @@ namespace Monitor
                 instrument = monitor.Instrument(Work);
 
             async Task Work(CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    instrument.Measure(start);
+                    instrument.Record(measurement);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -102,18 +101,18 @@ namespace Monitor
 
             ValueTask WorkSync() {
                 // Business logic
-                instrument.Measure();
+                instrument.Record();
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync() {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    instrument.Measure(start);
+                    instrument.Record(measurement);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -134,18 +133,18 @@ namespace Monitor
 
             ValueTask WorkSync() {
                 // Business logic
-                instrument.Measure();
+                instrument.Record();
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    instrument.Measure(start);
+                    instrument.Record(measurement);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }

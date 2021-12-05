@@ -11,7 +11,7 @@ namespace Monitor
         {
             readonly IInstrument instrument;
             public SUT(IMonitor monitor) => instrument = monitor.Instrument(Work);
-            public void Work() => instrument.Measure();
+            public void Work() => instrument.Record();
         }
 
         readonly SUT sut;
@@ -32,7 +32,7 @@ namespace Monitor
         [Fact]
         public void WorkObservesCommand() {
             sut.Work();
-            instrument.Received().Measure();
+            instrument.Received().Record();
         }
     }
 }

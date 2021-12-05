@@ -1,5 +1,4 @@
 using System;
-using Chronology;
 
 namespace Monitor
 {
@@ -17,8 +16,8 @@ namespace Monitor
         /// <summary>
         /// Starts a measurement, recording it's start time.
         /// </summary>
-        HighResolutionTimestamp Start();
-        void Measure(HighResolutionTimestamp startTime = default, Exception? exception = null);
+        Measurement Start();
+        void Record(Measurement measurement = default, Exception? exception = null);
     }
 
     /// <summary>
@@ -33,8 +32,8 @@ namespace Monitor
     /// </remarks>
     public interface IInstrument<in T>
     {
-        HighResolutionTimestamp Start();
-        void Measure(HighResolutionTimestamp startTime = default, Exception? exception = null, T? subject = default);
+        Measurement Start();
+        void Record(Measurement measurement = default, Exception? exception = null, T? subject = default);
     }
 
     /// <summary>
@@ -52,7 +51,7 @@ namespace Monitor
     /// </remarks>
     public interface IInstrument<in T1, in T2>
     {
-        HighResolutionTimestamp Start();
-        void Measure(HighResolutionTimestamp startTime = default, Exception? exception = null, T1? subject1 = default, T2? subject2 = default);
+        Measurement Start();
+        void Record(Measurement measurement = default, Exception? exception = null, T1? subject1 = default, T2? subject2 = default);
     }
 }

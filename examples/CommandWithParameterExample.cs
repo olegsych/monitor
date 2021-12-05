@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Chronology;
 using Fuzzy;
 
 namespace Monitor
@@ -20,10 +19,10 @@ namespace Monitor
             void Work(Input input) {
                 try {
                     // Business logic
-                    instrument.Measure(input);
+                    instrument.Record(input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(e, input);
+                    instrument.Record(e, input);
                     throw;
                 }
             }
@@ -37,13 +36,13 @@ namespace Monitor
                 instrument = monitor.Instrument<Input>(Work);
 
             void Work(Input input) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     // Business logic
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e, input);
+                    instrument.Record(measurement, e, input);
                     throw;
                 }
             }
@@ -57,13 +56,13 @@ namespace Monitor
                 instrument = monitor.Instrument<Input>(Work);
 
             async Task Work(Input input) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -77,13 +76,13 @@ namespace Monitor
                 instrument = monitor.Instrument<Input>(Work);
 
             async Task Work(Input input, CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -104,18 +103,18 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                instrument.Measure(input);
+                instrument.Record(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Yield(); // Business logic
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
@@ -136,18 +135,18 @@ namespace Monitor
 
             ValueTask WorkSync(Input input) {
                 // Business logic
-                instrument.Measure(input);
+                instrument.Record(input);
                 return ValueTask.CompletedTask;
             }
 
             async Task WorkAsync(Input input, CancellationToken cancellation) {
-                HighResolutionTimestamp start = instrument.Start();
+                Measurement measurement = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation); // Business logic
-                    instrument.Measure(start, input);
+                    instrument.Record(measurement, input);
                 }
                 catch(Exception e) {
-                    instrument.Measure(start, e);
+                    instrument.Record(measurement, e);
                     throw;
                 }
             }
