@@ -4,16 +4,15 @@ namespace Monitor
 {
     class CompositionExample
     {
-        void ConfigureServices(IServiceCollection services) =>
-            services.AddMonitoring()
-                .AddSingleton<ITelemetryDescriptor<Subject>, SubjectTelemetryDescriptor>()
-                .AddTelemetryDescriptor<Subject, SubjectTelemetryDescriptor>();
+        void ConfigureServices(IServiceCollection services) => services
+            .AddMonitoring()
+            .AddTelemetryDescriptor<Subject, SubjectTelemetryDescriptor>();
 
         class Subject
         {
-            public int Foo = default;
-            public string? Bar = default;
-            public Color Color = default;
+            public int Foo;
+            public string? Bar;
+            public Color Color;
         }
 
         enum Color
@@ -23,7 +22,7 @@ namespace Monitor
 
         class SubjectTelemetryDescriptor: ITelemetryDescriptor<Subject>
         {
-            void ITelemetryDescriptor<Subject>.Describe(ITelemetryDescription<Subject> description) {
+            public void Describe(ITelemetryDescription<Subject> description) {
                 description.AddMeasurement(_ => _.Foo);
                 description.AddProperty(_ => _.Bar);
                 description.AddDimension(_ => _.Color);

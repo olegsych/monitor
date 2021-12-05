@@ -32,7 +32,7 @@ namespace Monitor
                     instrument.Measure(start, input);
                 }
                 catch (Exception e){
-                    instrument.Measure(start, e);
+                    instrument.Measure(start, e, input);
                 }
             }
         }
