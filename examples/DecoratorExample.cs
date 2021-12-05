@@ -3,7 +3,8 @@ using System;
 namespace Monitor
 {
     /// <summary>
-    /// An example of how to implement a monitoring decorator when separation of processing and monitoring logic is desirable.
+    /// An example of how to implement a monitoring decorator when separation
+    /// of processing and monitoring logic is desirable.
     /// </summary>
     class DecoratorExample
     {
