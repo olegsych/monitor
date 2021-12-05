@@ -1,8 +1,9 @@
 namespace Monitor
 {
     /// <summary>
-    /// An example of monitoring multiple methods in the same class. While needing separate monitoring for different methods is a smell of breaking the
-    /// Single Responsibility Principle, this is a very common scenario today.
+    /// An example of monitoring multiple methods in the same class. While instrumenting
+    /// multiple methods is a smell of breaking the Single Responsibility Principle,
+    /// this is a very common scenario today.
     /// </summary>
     class MultipleMethodsExample
     {
