@@ -11,9 +11,9 @@ namespace Monitor
 
         class Subject
         {
-            public string? Foo = default;
-            public int Bar = default;
-            public EnumSubject Baz = default;
+            public string? Foo;
+            public int Bar;
+            public EnumSubject Baz;
         }
 
         class TelemetryDescriptor: ITelemetryDescriptor<Subject>
