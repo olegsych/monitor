@@ -2,6 +2,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Monitor
 {
+    /// <summary>
+    /// Shows how an application developer can register <see cref="Monitor"/>
+    /// and their own monitoring services for dependency injection.
+    /// </summary>
     class CompositionExample
     {
         void ConfigureServices(IServiceCollection services) => services
