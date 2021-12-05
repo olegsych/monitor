@@ -5,32 +5,35 @@ using Xunit;
 
 namespace Monitor
 {
+    /// <summary>
+    /// Shows how an application developer can test a class instrumented with <see cref="Monitor"/>.
+    /// </summary>
     public class TestExample
     {
-        class SUT
+        class SystemUnderTest
         {
             readonly IInstrument instrument;
-            public SUT(IMonitor monitor) => instrument = monitor.Instrument(Work);
+            public SystemUnderTest(IMonitor monitor) => instrument = monitor.Instrument(Work);
             public void Work() => instrument.Record();
         }
 
-        readonly SUT sut;
+        readonly SystemUnderTest sut;
         readonly IMonitor factory = Substitute.For<IMonitor>();
         readonly IInstrument instrument = Substitute.For<IInstrument>();
 
         public TestExample() {
             _ = factory.Instrument(Arg.Any<MethodBase>()).Returns(instrument);
-            sut = new SUT(factory);
+            sut = new SystemUnderTest(factory);
         }
 
         [Fact]
-        public void ConstructorCreatesCommandMonitor() {
+        public void ConstructorCreatesInstrument() {
             _ = factory.Received().Instrument(((Action)sut.Work).Method);
             _ = factory.Received(1).Instrument(Arg.Any<MethodBase>());
         }
 
         [Fact]
-        public void WorkObservesCommand() {
+        public void WorkRecordsExpectedMeasurement() {
             sut.Work();
             instrument.Received().Record();
         }
