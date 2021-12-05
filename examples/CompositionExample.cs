@@ -27,7 +27,7 @@ namespace Monitor
         class SubjectTelemetryDescriptor: ITelemetryDescriptor<Subject>
         {
             public void Describe(ITelemetryDescription<Subject> description) {
-                description.AddMeasurement(_ => _.Foo);
+                description.AddMetric(_ => _.Foo);
                 description.AddProperty(_ => _.Bar);
                 description.AddDimension(_ => _.Color);
             }
