@@ -6,7 +6,7 @@ Monitor is an application-focused .NET instrumentation API.
 
 ## Don't we already have too many instrumentation APIs?
 
-Yes! .NET already has a number of [instrumentation APIs](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/).
+Yes! .NET already has a [number](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/) of instrumentation APIs.
 Almost every major new version of the platform introduced new APIs, here are just a few examples.
 - .NET 1: [Trace](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.trace).
 - .NET 2: [TraceSource](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource)
@@ -14,6 +14,7 @@ Almost every major new version of the platform introduced new APIs, here are jus
 - .NET Core 3: [DiagnosticSource](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.diagnosticsource)
 - .NET 5: [ActivitySource](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource)
 - .NET 6: [Metrics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics)
+
 As the evolution of the platform accelerated in recent years, any reasonably successful application or service had witnessed
 emergence of at least one, often many new instrumentation APIs. And while we can hope that this area of .NET is now stable,
 backward compatibility requirements could mean that yet another API will need to be introduced in the future, once a
@@ -54,6 +55,7 @@ untested. Separating instrumentation logic into separate application services an
 require not just additional time, but a level of engineering maturity that many teams don't posess when they first start
 building a new application.
 
-The `DiagnosticSource` and `ILogger` APIs are abstract and can be easily used with the dynamic test isolation tools to test
-the application code. The `ILogger` in particular has served as an inspiration for this design. However, these APIs are
-focused primarily on logging and lack direct support for metrics and distributed traces.
+The `DiagnosticSource` and `ILogger` APIs are abstract and can be used with the dynamic test isolation tools to test
+the application code. The `ILogger` in particular has served as an inspiration for this design. However, these APIs still
+have low-level instrumentation details, they are focused primarily on logging and lack direct support for metrics and
+distributed traces.
