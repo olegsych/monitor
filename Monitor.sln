@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "src\Monitor.csproj", "{F1D9CD90-B1E3-4E28-A61D-C281A2CDDBE3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "tests\Tests.csproj", "{7CB85C64-672A-4B23-B684-2DA89D45AF92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "examples\Examples.csproj", "{4F593BE4-98EE-4C83-8ED1-E8AFAA1C573E}"
@@ -24,16 +22,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9375FD8-2A7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions", "src\Monitor.Abstractions\Monitor.Abstractions.csproj", "{04C76584-D172-443B-AB72-BBF18139127D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "src\Monitor\Monitor.csproj", "{F1B26120-8455-47E2-9447-653FAF7677E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F1D9CD90-B1E3-4E28-A61D-C281A2CDDBE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1D9CD90-B1E3-4E28-A61D-C281A2CDDBE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1D9CD90-B1E3-4E28-A61D-C281A2CDDBE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1D9CD90-B1E3-4E28-A61D-C281A2CDDBE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CB85C64-672A-4B23-B684-2DA89D45AF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CB85C64-672A-4B23-B684-2DA89D45AF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB85C64-672A-4B23-B684-2DA89D45AF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +42,10 @@ Global
 		{04C76584-D172-443B-AB72-BBF18139127D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C76584-D172-443B-AB72-BBF18139127D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C76584-D172-443B-AB72-BBF18139127D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B26120-8455-47E2-9447-653FAF7677E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B26120-8455-47E2-9447-653FAF7677E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B26120-8455-47E2-9447-653FAF7677E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B26120-8455-47E2-9447-653FAF7677E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +55,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{04C76584-D172-443B-AB72-BBF18139127D} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
+		{F1B26120-8455-47E2-9447-653FAF7677E3} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
 	EndGlobalSection
 EndGlobal
