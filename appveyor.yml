@@ -24,13 +24,13 @@ clone_script:
     }
 
 build_script:
-- cmd: dotnet build .\Monitor.sln -nologo -logger:"C:\Program Files\AppVeyor\BuildAgent\dotnetcore\Appveyor.MSBuildLogger.dll"
+- cmd: dotnet build .\Monitor.sln -logger:"C:\Program Files\AppVeyor\BuildAgent\dotnetcore\Appveyor.MSBuildLogger.dll"
 
 test_script:
-- cmd: dotnet test .\tests\Tests.csproj
+- cmd: dotnet test .\Monitor.sln
 
 after_test:
-- cmd: dotnet pack .\src\Monitor.csproj --configuration Release --include-symbols
+- cmd: dotnet pack .\Monitor.sln --configuration Release --include-symbols
 
 artifacts:
 - path: bin\release\*.*nupkg
