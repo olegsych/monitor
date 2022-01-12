@@ -10,26 +10,26 @@ namespace Monitor
     /// </summary>
     public class TestExample
     {
-        class SystemUnderTest
+        class ApplicationCode
         {
             readonly IInstrument instrument;
-            public SystemUnderTest(IMonitor monitor) => instrument = monitor.Instrument(Work);
+            public ApplicationCode(IMonitor monitor) => instrument = monitor.Instrument(Work);
             public void Work() => instrument.Record();
         }
 
-        readonly SystemUnderTest sut;
-        readonly IMonitor factory = Substitute.For<IMonitor>();
+        readonly ApplicationCode sut;
+        readonly IMonitor monitor = Substitute.For<IMonitor>();
         readonly IInstrument instrument = Substitute.For<IInstrument>();
 
         public TestExample() {
-            _ = factory.Instrument(Arg.Any<MethodBase>()).Returns(instrument);
-            sut = new SystemUnderTest(factory);
+            _ = monitor.Instrument(Arg.Any<MethodBase>()).Returns(instrument);
+            sut = new ApplicationCode(monitor);
         }
 
         [Fact]
         public void ConstructorCreatesInstrument() {
-            _ = factory.Received().Instrument(((Action)sut.Work).Method);
-            _ = factory.Received(1).Instrument(Arg.Any<MethodBase>());
+            _ = monitor.Received().Instrument(((Action)sut.Work).Method);
+            _ = monitor.Received(1).Instrument(Arg.Any<MethodBase>());
         }
 
         [Fact]
