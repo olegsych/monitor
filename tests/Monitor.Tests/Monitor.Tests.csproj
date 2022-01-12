@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <IsPackable>false</IsPackable>
     <RootNamespace>Monitor</RootNamespace>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Fuzzy" Version="*" />
@@ -13,6 +13,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Monitor\Monitor.csproj" />
+    <ProjectReference Include="..\..\src\Monitor\Monitor.csproj" />
   </ItemGroup>
 </Project>
