@@ -1,7 +1,7 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
+using Monitor;
 
-namespace Monitor
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class IServiceCollectionExtensions
     {

@@ -14,14 +14,18 @@ namespace Monitor
         public static IInstrument Instrument(this IMonitor monitor, Func<Task> method) =>
             throw new NotImplementedException();
 
-        public static IInstrument Instrument(this IMonitor monitor, Func<ValueTask> method) =>
+        public static IInstrument Instrument(this IMonitor monitor, Func<CancellationToken, Task> method) =>
             throw new NotImplementedException();
 
-        public static IInstrument Instrument(this IMonitor monitor, Func<CancellationToken, Task> method) =>
+        #if NETSTANDARD2_1
+
+        public static IInstrument Instrument(this IMonitor monitor, Func<ValueTask> method) =>
             throw new NotImplementedException();
 
         public static IInstrument Instrument(this IMonitor monitor, Func<CancellationToken, ValueTask> method) =>
             throw new NotImplementedException();
+
+        #endif
 
         #endregion
 
@@ -36,15 +40,19 @@ namespace Monitor
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<T, CancellationToken, Task> method) =>
             throw new NotImplementedException();
 
+        #if NETSTANDARD2_1
+
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<T, ValueTask> method) =>
             throw new NotImplementedException();
 
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<T, CancellationToken, ValueTask> method) =>
             throw new NotImplementedException();
 
-        #endregion
+        #endif
 
-        #region Instrument<TOutput>
+#endregion
+
+#region Instrument<TOutput>
 
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<T> method) =>
             throw new NotImplementedException();
@@ -55,15 +63,19 @@ namespace Monitor
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<CancellationToken, Task<T>> method) =>
             throw new NotImplementedException();
 
+        #if NETSTANDARD2_1
+
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<ValueTask<T>> method) =>
             throw new NotImplementedException();
 
         public static IInstrument<T> Instrument<T>(this IMonitor monitor, Func<CancellationToken, ValueTask<T>> method) =>
             throw new NotImplementedException();
 
-        #endregion
+        #endif
 
-        #region Instrument<TInput, TOutput>
+#endregion
+
+#region Instrument<TInput, TOutput>
 
         public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor monitor, Func<TInput, TOutput> method) =>
             throw new NotImplementedException();
@@ -74,12 +86,16 @@ namespace Monitor
         public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor monitor, Func<TInput, CancellationToken, Task<TOutput>> method) =>
             throw new NotImplementedException();
 
+        #if NETSTANDARD2_1
+
         public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor monitor, Func<TInput, ValueTask<TOutput>> method) =>
             throw new NotImplementedException();
 
         public static IInstrument<TInput, TOutput> Instrument<TInput, TOutput>(this IMonitor monitor, Func<TInput, CancellationToken, ValueTask<TOutput>> method) =>
             throw new NotImplementedException();
 
-        #endregion
+        #endif
+
+#endregion
     }
 }

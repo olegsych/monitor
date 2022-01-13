@@ -16,5 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\Monitor\Monitor.csproj" />
+    <ProjectReference Include="..\src\Monitor.Abstractions\Monitor.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Monitor.DependencyInjection\Monitor.DependencyInjection.csproj" />
   </ItemGroup>
 </Project>
