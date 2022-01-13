@@ -4,4 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Monitoring abstractions.</Description>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Chronology" Version="*" />
+  </ItemGroup>
 </Project>

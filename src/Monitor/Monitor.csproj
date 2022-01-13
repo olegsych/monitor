@@ -4,6 +4,6 @@
     <Description>An application-focused instrumentation API.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Chronology" Version="*" />
+    <ProjectReference Include="..\Monitor.Abstractions\Monitor.Abstractions.csproj" />
   </ItemGroup>
 </Project>
