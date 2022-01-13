@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <RootNamespace>Monitor</RootNamespace>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <RootNamespace>Athene.Monitor</RootNamespace>
     <Description>Monitoring abstractions.</Description>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Chronology" Version="*" />
