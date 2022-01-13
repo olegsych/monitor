@@ -3,7 +3,7 @@ using System.Reflection;
 using NSubstitute;
 using Xunit;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Shows how an application developer can test a class instrumented with <see cref="Monitor"/>.

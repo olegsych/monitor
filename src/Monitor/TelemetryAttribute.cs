@@ -1,6 +1,6 @@
 using System;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     public abstract class TelemetryAttribute: Attribute
     {

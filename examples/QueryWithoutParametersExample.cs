@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Fuzzy;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Examples of monitoring a query that takes an input and returns an output.

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Creates instruments for different types of operations.

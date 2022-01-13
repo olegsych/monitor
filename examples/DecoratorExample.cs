@@ -1,6 +1,6 @@
 using System;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// An example of how to implement a monitoring decorator when separation

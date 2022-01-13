@@ -1,4 +1,4 @@
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// An example of monitoring multiple methods in the same class. While instrumenting

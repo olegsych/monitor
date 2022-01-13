@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Shows how an application developer can register <see cref="Monitor"/>

@@ -1,4 +1,4 @@
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Describes telemetry of a given <typeparamref name="TSubject"/> type.

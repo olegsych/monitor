@@ -1,6 +1,6 @@
 using Fuzzy;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     public abstract class TestFixture
     {

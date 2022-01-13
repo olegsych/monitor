@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     public static class IMonitorExtensions
     {

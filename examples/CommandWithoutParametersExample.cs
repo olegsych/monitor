@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Fuzzy;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     class CommandWithoutParametersExample: Example
     {

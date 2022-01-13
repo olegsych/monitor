@@ -1,4 +1,4 @@
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Shows how telemetry attributes can be applied to customize telemetry recording.

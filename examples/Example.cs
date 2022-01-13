@@ -1,6 +1,6 @@
 using Fuzzy;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// A base class for other examples.
