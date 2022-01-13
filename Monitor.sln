@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30711.63
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "examples\Examples.csproj", "{4F593BE4-98EE-4C83-8ED1-E8AFAA1C573E}"
 EndProject
@@ -17,20 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}"
+	ProjectSection(SolutionItems) = preProject
+		src\version.json = src\version.json
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions", "src\Monitor.Abstractions\Monitor.Abstractions.csproj", "{04C76584-D172-443B-AB72-BBF18139127D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor.Abstractions", "src\Monitor.Abstractions\Monitor.Abstractions.csproj", "{04C76584-D172-443B-AB72-BBF18139127D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "src\Monitor\Monitor.csproj", "{F1B26120-8455-47E2-9447-653FAF7677E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "src\Monitor\Monitor.csproj", "{F1B26120-8455-47E2-9447-653FAF7677E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E7599C5F-F77A-4182-960D-E413DBAE83C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Tests", "tests\Monitor\Monitor.Tests.csproj", "{C1F7823F-DDA0-4629-A333-603978AC8308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor.Tests", "tests\Monitor\Monitor.Tests.csproj", "{C1F7823F-DDA0-4629-A333-603978AC8308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions.Tests", "tests\Monitor.Abstractions\Monitor.Abstractions.Tests.csproj", "{25573AFA-1236-41BE-B837-B9C4F97D23AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor.Abstractions.Tests", "tests\Monitor.Abstractions\Monitor.Abstractions.Tests.csproj", "{25573AFA-1236-41BE-B837-B9C4F97D23AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.DependencyInjection", "src\Monitor.DependencyInjection\Monitor.DependencyInjection.csproj", "{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor.DependencyInjection", "src\Monitor.DependencyInjection\Monitor.DependencyInjection.csproj", "{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.DependencyInjection.Tests", "tests\Monitor.DependencyInjection\Monitor.DependencyInjection.Tests.csproj", "{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor.DependencyInjection.Tests", "tests\Monitor.DependencyInjection\Monitor.DependencyInjection.Tests.csproj", "{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,9 +73,6 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FEAD4371-1791-48BD-AEB3-52AC33AB9084}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{04C76584-D172-443B-AB72-BBF18139127D} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
 		{F1B26120-8455-47E2-9447-653FAF7677E3} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
@@ -80,5 +80,8 @@ Global
 		{25573AFA-1236-41BE-B837-B9C4F97D23AA} = {E7599C5F-F77A-4182-960D-E413DBAE83C5}
 		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
 		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF} = {E7599C5F-F77A-4182-960D-E413DBAE83C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEAD4371-1791-48BD-AEB3-52AC33AB9084}
 	EndGlobalSection
 EndGlobal
