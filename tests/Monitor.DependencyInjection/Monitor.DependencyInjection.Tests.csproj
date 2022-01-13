@@ -13,6 +13,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Monitor\Monitor.csproj" />
+    <ProjectReference Include="..\..\src\Monitor.DependencyInjection\Monitor.DependencyInjection.csproj" />
   </ItemGroup>
 </Project>
