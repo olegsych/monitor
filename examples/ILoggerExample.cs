@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     public class ILoggerExample
     {

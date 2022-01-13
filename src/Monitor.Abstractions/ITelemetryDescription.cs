@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Collects descriptinos of the <typeparamref name="TSubject"/> telemetry.

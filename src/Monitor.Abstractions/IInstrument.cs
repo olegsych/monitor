@@ -1,6 +1,6 @@
 using System;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     /// <summary>
     /// Instruments operations without inputs or outputs.

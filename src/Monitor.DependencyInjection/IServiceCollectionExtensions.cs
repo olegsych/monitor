@@ -1,5 +1,5 @@
 using System;
-using Monitor;
+using Athene.Monitor;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

@@ -1,6 +1,6 @@
 using Chronology;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     public readonly record struct Measurement
     {

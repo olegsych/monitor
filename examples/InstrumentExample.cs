@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Monitor
+namespace Athene.Monitor
 {
     class InstrumentExample
     {
