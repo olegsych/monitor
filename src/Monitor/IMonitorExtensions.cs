@@ -9,7 +9,7 @@ namespace Monitor
         #region Instrument
 
         public static IInstrument Instrument(this IMonitor monitor, Action method) =>
-            monitor.Instrument(method.Method);
+            throw new NotImplementedException();
 
         public static IInstrument Instrument(this IMonitor monitor, Func<Task> method) =>
             throw new NotImplementedException();

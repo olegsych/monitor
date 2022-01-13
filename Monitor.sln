@@ -24,9 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "src\Monitor\Moni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E7599C5F-F77A-4182-960D-E413DBAE83C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Tests", "tests\Monitor.Tests\Monitor.Tests.csproj", "{C1F7823F-DDA0-4629-A333-603978AC8308}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Tests", "tests\Monitor\Monitor.Tests.csproj", "{C1F7823F-DDA0-4629-A333-603978AC8308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions.Tests", "tests\Monitor.Abstractions.Tests\Monitor.Abstractions.Tests.csproj", "{25573AFA-1236-41BE-B837-B9C4F97D23AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions.Tests", "tests\Monitor.Abstractions\Monitor.Abstractions.Tests.csproj", "{25573AFA-1236-41BE-B837-B9C4F97D23AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
