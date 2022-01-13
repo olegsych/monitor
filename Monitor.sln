@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Tests", "tests\Moni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.Abstractions.Tests", "tests\Monitor.Abstractions\Monitor.Abstractions.Tests.csproj", "{25573AFA-1236-41BE-B837-B9C4F97D23AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.DependencyInjection", "src\Monitor.DependencyInjection\Monitor.DependencyInjection.csproj", "{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.DependencyInjection.Tests", "tests\Monitor.DependencyInjection\Monitor.DependencyInjection.Tests.csproj", "{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +58,14 @@ Global
 		{25573AFA-1236-41BE-B837-B9C4F97D23AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25573AFA-1236-41BE-B837-B9C4F97D23AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25573AFA-1236-41BE-B837-B9C4F97D23AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +78,7 @@ Global
 		{F1B26120-8455-47E2-9447-653FAF7677E3} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
 		{C1F7823F-DDA0-4629-A333-603978AC8308} = {E7599C5F-F77A-4182-960D-E413DBAE83C5}
 		{25573AFA-1236-41BE-B837-B9C4F97D23AA} = {E7599C5F-F77A-4182-960D-E413DBAE83C5}
+		{862A8B7F-D8F3-4EF5-9E30-4FC055BB7D95} = {D9375FD8-2A73-4FF8-A8DB-6B53287E01A3}
+		{1C9FDD05-C636-4C34-AEFE-5B9F341267CF} = {E7599C5F-F77A-4182-960D-E413DBAE83C5}
 	EndGlobalSection
 EndGlobal
