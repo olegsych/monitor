@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Description>An application-focused instrumentation API.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Chronology" Version="*" />
+    <ProjectReference Include="..\Monitor.Abstractions\Monitor.Abstractions.csproj" />
   </ItemGroup>
 </Project>
