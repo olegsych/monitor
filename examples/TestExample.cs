@@ -26,13 +26,13 @@ namespace Monitor
             sut = new ApplicationCode(monitor);
         }
 
-        [Fact]
+        [Fact(Skip = "Not implemented yet")]
         public void ConstructorCreatesInstrument() {
             _ = monitor.Received().Instrument(((Action)sut.Work).Method);
             _ = monitor.Received(1).Instrument(Arg.Any<MethodBase>());
         }
 
-        [Fact]
+        [Fact(Skip = "Not implemented yet")]
         public void WorkRecordsExpectedMeasurement() {
             sut.Work();
             instrument.Received().Record();
