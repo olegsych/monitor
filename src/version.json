@@ -2,8 +2,7 @@
     // https://github.com/dotnet/Nerdbank.GitVersioning/blob/master/doc/versionJson.md
     "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json",
     "pathFilters": [
-        "/directory.build.props",
-        "/StrongName.snk"
+        "/modules"
     ],
     "publicReleaseRefSpec": [
         "^refs/heads/master$"
