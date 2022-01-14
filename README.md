@@ -66,7 +66,7 @@ distributed traces.
 
 `Monitor` provides an API focused on the application types and methods. The `IMonitor` interface will be injected in the
 application code, typically by the dependency injection container. It allows the application code to create an `IInstrument`
-for instrumenting a particular method. The example below shows how a measurement of method duration, its input and possible
+for instrumenting a particular method. The example below shows how an observation of method duration, its input and possible
 can be recorded.
 
 ```C#
@@ -92,13 +92,13 @@ class ApplicationComponent
         instrument = monitor.Instrument<ApplicationInput>(Work);
 
     void Work(ApplicationInput input) {
-        Measurement measurement = instrument.Start();
+        Observation observation = instrument.Start();
         try {
             // Business logic
-            instrument.Record(measurement, input);
+            instrument.Record(observation, input);
         }
         catch(Exception e) {
-            instrument.Record(measurement, e, input);
+            instrument.Record(observation, e, input);
             throw;
         }
     }

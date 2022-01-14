@@ -49,10 +49,10 @@ namespace Athene.Monitor
             [Fact(Skip = "Not implemented yet")]
             public void InvokesBeginScopeMethod() {
                 // Example
-                Measurement measurement = instrument.Start();
-                object assert = logger.Received().BeginScope(measurement);
+                Observation observation = instrument.Start();
+                object assert = logger.Received().BeginScope(observation);
 
-                instrument.Record(measurement, subject);
+                instrument.Record(observation, subject);
                 logger.Received().Log(LogLevel.Information, Arg.Any<EventId>(), subject, noException, Arg.Is(expectedFormatter));
             }
 
@@ -60,12 +60,12 @@ namespace Athene.Monitor
             public void SupportsExceptions() {
                 // Example
                 var exception = new Exception();
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     throw exception;
                 }
                 catch (Exception e) {
-                    instrument.Record(measurement, e);
+                    instrument.Record(observation, e);
                 }
 
                 // What happens

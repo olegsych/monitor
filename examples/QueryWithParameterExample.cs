@@ -41,14 +41,14 @@ namespace Athene.Monitor
                 instrument = monitor.Instrument<Input, Output>(Query);
 
             Output Query(Input input) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     var output = new Output(); // Business logic
-                    instrument.Record(measurement, input, output);
+                    instrument.Record(observation, input, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                     throw;
                 }
             }
@@ -62,15 +62,15 @@ namespace Athene.Monitor
                 instrument = monitor.Instrument<Input, Output>(Query);
 
             async Task<Output> Query(Input input) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    instrument.Record(measurement, input, output);
+                    instrument.Record(observation, input, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                     throw;
                 }
             }
@@ -84,15 +84,15 @@ namespace Athene.Monitor
                 instrument = monitor.Instrument<Input, Output>(Query);
 
             async Task<Output> Query(Input input, CancellationToken cancellation) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    instrument.Record(measurement, input, output);
+                    instrument.Record(observation, input, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                     throw;
                 }
             }
@@ -118,15 +118,15 @@ namespace Athene.Monitor
             }
 
             async Task<Output> QueryAsync(Input input) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     await Task.Yield();
                     var output = new Output();
-                    instrument.Record(measurement, input, output);
+                    instrument.Record(observation, input, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                     throw;
                 }
             }
@@ -152,15 +152,15 @@ namespace Athene.Monitor
             }
 
             async Task<Output> QueryAsync(Input input, CancellationToken cancellation) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     await Task.Delay(50, cancellation);
                     var output = new Output();
-                    instrument.Record(measurement, input, output);
+                    instrument.Record(observation, input, output);
                     return output;
                 }
                 catch(Exception e) {
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                     throw;
                 }
             }
