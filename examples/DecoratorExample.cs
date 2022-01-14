@@ -26,13 +26,13 @@ namespace Athene.Monitor
             }
 
             public void Work(Input input) {
-                Measurement measurement = instrument.Start();
+                Observation observation = instrument.Start();
                 try {
                     worker.Work(input);
-                    instrument.Record(measurement, input);
+                    instrument.Record(observation, input);
                 }
                 catch (Exception e){
-                    instrument.Record(measurement, e, input);
+                    instrument.Record(observation, e, input);
                 }
             }
         }

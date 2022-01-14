@@ -33,7 +33,7 @@ namespace Athene.Monitor
         }
 
         [Fact(Skip = "Not implemented yet")]
-        public void WorkRecordsExpectedMeasurement() {
+        public void WorkRecordsExpectedObservation() {
             sut.Work();
             instrument.Received().Record();
         }

@@ -18,8 +18,8 @@ namespace Athene.Monitor
 
         class SubjectInstrument: IInstrument<Subject>
         {
-            public void Record(Measurement measurement = default, Exception? exception = null, Subject? subject = null) => throw new NotImplementedException();
-            public Measurement Start() => throw new NotImplementedException();
+            public void Record(Observation observation = default, Exception? exception = null, Subject? subject = null) => throw new NotImplementedException();
+            public Observation Start() => throw new NotImplementedException();
         }
 
     }

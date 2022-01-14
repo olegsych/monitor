@@ -14,10 +14,10 @@ namespace Athene.Monitor
     public interface IInstrument
     {
         /// <summary>
-        /// Starts a measurement, recording it's start time.
+        /// Starts a observation, recording it's start time.
         /// </summary>
-        Measurement Start();
-        void Record(Measurement measurement = default, Exception? exception = null);
+        Observation Start();
+        void Record(Observation observation = default, Exception? exception = null);
     }
 
     /// <summary>
@@ -32,8 +32,8 @@ namespace Athene.Monitor
     /// </remarks>
     public interface IInstrument<in T>
     {
-        Measurement Start();
-        void Record(Measurement measurement = default, Exception? exception = null, T? subject = default);
+        Observation Start();
+        void Record(Observation observation = default, Exception? exception = null, T? subject = default);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ namespace Athene.Monitor
     /// </remarks>
     public interface IInstrument<in T1, in T2>
     {
-        Measurement Start();
-        void Record(Measurement measurement = default, Exception? exception = null, T1? subject1 = default, T2? subject2 = default);
+        Observation Start();
+        void Record(Observation observation = default, Exception? exception = null, T1? subject1 = default, T2? subject2 = default);
     }
 }
