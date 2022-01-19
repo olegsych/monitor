@@ -14,7 +14,6 @@ namespace Athene.Monitor
     public interface IMeasurement0D<T>: IDisposable
     {
         void Measure(T value);
-        void Measure(UtcDateTime timestamp, T value);
     }
 
     /// <summary>
@@ -28,7 +27,6 @@ namespace Athene.Monitor
     public interface IMeasurement1D<T>: IDisposable
     {
         void Measure(T value, string dimensionValue);
-        void Measure(UtcDateTime timestamp, T value, string dimensionsValue);
     }
 
     /// <summary>
@@ -42,6 +40,5 @@ namespace Athene.Monitor
     public interface IMeasurement2D<T>: IDisposable
     {
         void Measure(T value, string dimensionValue1, string dimensionValue2);
-        void Measure(UtcDateTime timestamp, T value, string dimensionsValue1, string dimensionValue2);
     }
 }
