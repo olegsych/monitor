@@ -8,7 +8,6 @@ namespace Athene.Monitor
     public interface IMeasurementFactory0D<T>
     {
         IMeasurement0D<T> Create(Type subject, string metricSuffix);
-        IMeasurement0D<T> Create(string metricName);
     }
 
     /// <summary>
@@ -17,7 +16,6 @@ namespace Athene.Monitor
     public interface IMeasurementFactory1D<T>
     {
         IMeasurement1D<T> Create(Type subject, string metricSuffix, string dimensionName);
-        IMeasurement1D<T> Create(string metricName, string dimensionName);
     }
 
     /// <summary>
@@ -26,6 +24,5 @@ namespace Athene.Monitor
     public interface IMeasurementFactory2D<T>
     {
         IMeasurement2D<T> Create(Type subject, string metricSuffix, string dimensionName1, string dimensionName2);
-        IMeasurement2D<T> Create(string metricName, string dimensionName1, string dimensionName2);
     }
 }
