@@ -17,12 +17,4 @@ namespace Athene.Monitor
     {
         IMeasurement1D<T> Create(Type subject, string metricSuffix, string dimensionName);
     }
-
-    /// <summary>
-    /// Creates an <see cref="IMeasurement2D{T}"/> for a given metric with 2 custom dimensions.
-    /// </summary>
-    public interface IMeasurementFactory2D<T>
-    {
-        IMeasurement2D<T> Create(Type subject, string metricSuffix, string dimensionName1, string dimensionName2);
-    }
 }
